@@ -1,0 +1,499 @@
+.body{
+    font-family: open-sans;
+}
+/*---------------------------Example styles for dropdown arrow and FAQ-------------------------------*/
+.credit-card-container{
+    margin-top: 20px;
+}
+.faq-item-ccard{
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  
+  }
+  
+  .faq-question-ccard {
+    display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 20px;
+      font-family: 'Open Sans', sans-serif;
+  }
+  .arrowcc {
+    font-size: 14px;
+    transition: transform 0.3s ease; /* Smooth arrow rotation transition */
+  }
+  
+  .arrowcc.expanded {
+    transform: rotate(180deg); /* Rotate arrow when expanded */
+  }
+  
+  .faq-answer-ccard {
+    margin-top: 10px; /* Margin above answer */
+    font-size: 18px;
+   
+  }
+  
+  .faq-answer-ccard p {
+    margin: 0; /* Remove default margin for paragraphs */
+  
+  }
+  .faq-container-ccard h1{
+    font-size: 3 rem;
+    color: #3e2780;
+    font-weight: normal;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .credit-cardrow {
+    display: flex;
+    align-items: center;
+  }
+  
+  .credit-card-col-md-6 {
+    padding: 0 15px;
+    padding-left: 5%;
+    max-width: 50%;
+  }
+  .credit-card-col-md-6-cc {
+        width: 80%;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+  
+  .credit-card-image-container {
+    text-align: center;
+    margin-bottom: 20px;
+
+  }
+  
+  .credit-card-image-container img {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  .credit-card-text-container h1 {
+    font-size: 3rem;
+  color: #3e2780;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+  }
+  .credit-card-col-md-6-cc{
+    width: 40%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1)
+  }
+  .credit-card-col-md-6-cc form{
+    background-color: #fff;
+    width: 100%;
+    border-radius: 8px;
+    
+  }
+  .credit-card-col-md-6 h1{
+ 
+    color: #3e2780;
+    font-size: 3rem;
+    font-weight: normal;
+  }
+  .credit-card-col-md-6-cc h2{
+    color: #3e2780;
+    font-size: 2rem;
+    font-weight: normal;
+  }
+  
+  .credit-card-form-group {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #000000a6;
+  }
+  
+  .credit-card-invalid-feedback {
+    color: #dc3545;
+    font-size: 0.875rem;
+  }
+  
+  .credit-card-btn-btn-primary {
+    background-color: #3e2780;
+    color: #ffffff;
+    padding: 10px;
+    width: 50%;
+    border-radius: 5px;
+    margin-left: 25%;
+  }
+  
+  .credit-card-btn-primary:hover {
+    background-color: #5f3ba6;
+  }
+
+  
+    /*--------------------------------------Custom section styles------------------------------*/
+.credit-custom-section {
+    padding: 50px 0;
+   
+  } 
+  .credit-custom-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .credit-custom-section h1 {
+    font-size: 3rem; /* Example font size */
+    color: #3e2780; /* Example text color */
+    margin-left: 25%;
+    font-weight: normal;
+    margin-top: 60px;
+  }
+  
+  
+  .credit-custom-text {
+    flex: 1;
+    padding: 0 20px;
+  }
+  .credit-custom-text p {
+    font-size: 1.5rem;
+    margin-left: 10%;
+    color: #000000a6;
+    text-align: justify;
+  }
+  
+  .credit-custom-image {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .credit-custom-image img {
+    max-width: 60%; /* Adjust image size as needed */
+    height: auto;
+  }
+     /*---------------------------why-choose-us section css-----------------------------------------------*/
+     .credit-card-works {
+        text-align: center;
+      }
+  .credit-card-works h1{
+    color: #3e2780;
+    font-size: 3rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    padding-bottom: 5%;
+  }
+  .credit-card-features {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+  
+  .credit-card-feature {
+    text-align: center;
+    flex: 1;
+    padding: 10px; /* Added padding to space out the features */
+    max-width: 30%;
+    padding-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .credit-card-feature img {
+    max-width: 25%;
+    height: 25%;
+    margin-bottom: 20px;
+  }
+  
+  .credit-card-feature h4 {
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+    color: #3e2780;
+    font-weight: normal;
+  }
+  
+.credit-card-feature p {
+    text-align: justify;
+    margin-bottom: 10px; /* Adds space between paragraphs */
+    font-size: 1rem;
+    color: #000000a6;
+    text-align: center;
+  }
+  
+
+  .row-mt-5{
+      margin-bottom: 40px;
+      margin-top: 40px;
+  }
+  .col-md-12 {
+    text-align: center;
+    padding: 20px;
+  }
+
+  /* Add styles for OTP input fields */
+  .otp-input-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .otp-input {
+    width: 40px; /* Adjust width as needed */
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin: 0 5px; /* Add space between OTP inputs */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-container {
+    background-color: #fff;
+    width: 300px; /* Adjust modal width as needed */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .loan-modal-content {
+    text-align: center;
+  }
+  
+  .loan-modal-content h3 {
+    margin-bottom: 10px;
+  }
+  
+  .loan-modal-content p {
+    margin-bottom: 20px;
+  }
+  .loan-modal-content img{
+    margin-left: 0px;
+    width: 150px;
+    height: 150px;
+  }
+  
+  
+  .loan-modal-content input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .credit-card-btn-btn-primary {
+    margin-right: 25%;
+    /* padding: 10px 10px; */
+    background-color: #3e2780;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .credit-card-btn-btn-primary:hover {
+    background-color: #0056b3;
+  }
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block; 
+  }
+
+  .otpclose{
+    margin-left: 85%;
+    outline: none;
+    cursor: pointer;
+    background-color: hsl(0, 14%, 95%);
+    background: none;
+    border: none;
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+  }
+  .otpclose:hover{
+    background-color: hsl(0, 14%, 95%);
+  }
+
+  @media (max-width: 768px) {
+    .credit-card-container {
+      overflow: hidden;
+    }
+    .credit-cardrow {
+      flex-direction: column;
+    }
+   
+  .credit-card-form-container {
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .credit-card-col-md-6 {
+    width: 100%;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+  .credit-card-col-md-6-cc {
+    width: 95%;
+    max-width: 100%;
+  }
+  .credit-card-col-md-6-cc h2{
+ 
+    color: #3e2780;
+    font-size: 1.6rem;
+    font-weight: normal;
+  }
+  .credit-card-col-md-6-cc form{
+    width: 100%;
+    max-width: 100%;
+  }
+  .credit-card-text-container h1{
+    max-width: 100%;
+    font-size: 28px;
+  }
+  .credit-card-image-container{
+    max-width: 100%;
+    object-fit:fill;
+   
+  }
+  .credit-card-image-container img{
+    height: 150px;
+  }
+  .credit-card-form-container p{
+    font-size: 28px;
+  }
+/*-------------------------faq----------------------------------------------*/
+.credit-card-works {
+    text-align: center;
+    margin-top: 0px;
+  }
+  .credit-card-works h1{
+    font-size: 28px;
+  }
+  .credit-card-features {
+    display: block;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  .credit-card-feature {
+    text-align: center;
+    flex: 1;
+    padding: 10px; /* Added padding to space out the features */
+    max-width: 100%;
+  }
+
+  .credit-card-feature img {
+    max-width: 50px;
+    height: auto;
+    margin-top: 5%;
+    margin-bottom: 10px;
+    /* padding-left: 10px; */
+  }
+
+  .credit-card-feature h4 {
+    margin-top: 10px;
+    padding-right: 30px;
+    font-size: 1.5rem;
+  }
+  .credit-card-feature p {
+    text-align: center;
+    font-size: 18px;
+  }
+
+ /*-----------------------------faq-------------------------------------------*/
+ .faq-container-ccard h1{
+    font-size: 28px;
+    color: #3e2780;
+    padding-bottom: 20px;
+  }
+  .faq-question-ccard{
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    }
+.faq-answer-ccard{
+    font-size: 15px;
+    font-family: 'Open Sans', sans-serif;
+
+    }
+/*--------------------------------------------------------------------- */
+.credit-custom-content {
+    display: flex; /* Use flexbox to align items */
+    flex-direction: column; /* Stack items vertically */
+  }
+  
+  .credit-custom-section h1 {
+    font-size: 28px; /* Example font size */
+    color: #3e2780; /* Example text color */
+    text-align: center; /* Center align heading */
+    margin-left: 10px;
+  }
+  
+  .credit-custom-image {
+    order: 1; /* Display image first */
+  }
+  
+  .credit-custom-text {
+    order: 2; /* Display text second */
+    padding: 0 20px; /* Example padding */
+  }
+  
+  .credit-custom-text p {
+    font-size: 18px;
+    margin-top: 0; /* Remove default margin */
+    margin-bottom: 20px; /* Example margin */
+    text-align: justify;
+    margin-left: 0%;
+  }
+
+  
+/*  --------------fourth section -----------------*/ 
+.credit-card-how-it-works {
+    text-align: center;
+  }
+  .credit-card-how-it-works h2{
+    color: #3e2780;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    font-size: 28px;
+  }
+  
+  .credit-card-feature {
+    flex: 1;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px; 
+  }
+  .credit-card-feature p{
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  .credit-card-feature img{
+    width: 25%;
+  }
+  .credit-card-features {
+    display: block;
+    margin-top: 10px;
+    gap: 20px;
+  }
+/*  ------------------------------------------------------- */
+  
+    
+    .col-md-12 {
+      text-align: center;
+      padding: 10px;
+    }
+  }
+  

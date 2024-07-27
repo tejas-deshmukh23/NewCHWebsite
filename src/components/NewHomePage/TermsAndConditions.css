@@ -1,0 +1,99 @@
+
+.content-of-termsC h2{
+    color: #3e2780;
+    font-weight: normal;
+    font-size: 2.5rem;
+}
+.terms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    grid-template-rows: auto; /* Single row */
+
+}
+.text-section-tc h1 {
+    font-size: 3rem;
+   
+}
+
+/*-------query for mobile---------*/
+@media (max-width: 768px) {
+    /* CSS rules here */
+    .text-section-tc{
+        padding: 20px;
+    }
+
+.text-section-tc h1{
+    font-size: 28px;
+    text-align: left;
+}
+
+
+.content-of-termsC p{
+    font-size: 18px;
+    color: #000000a6;
+}
+
+
+.content-of-termsC h2{
+      font-size: 22px;
+
+}
+.text-section {
+    width: 100%;
+    max-width: 100%; /* Adjust as needed */
+    margin-bottom: 20px; /* Space between text and image */
+}
+
+
+.image-section img {
+    height: auto;
+}
+
+}
+
+
+
+
+
+
+/*-------query for desktop---------*/
+@media (min-width: 768px) {
+
+    .terms-container {
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: left;
+    }
+.content-of-termsC{
+    padding: 20px;
+}
+    .content-of-termsC p{
+        font-size: 1rem;
+        color: #000000a6;
+
+    }
+    .text-section-tc h1{
+        font-size: 3rem;
+        margin-left: 5%;
+        margin-top: -15%;
+       
+    }
+
+    .text-section {
+        width: 55%; /* Adjust width as needed */
+        margin-bottom: 0;
+    }
+    .content-of-termsC h2{
+        font-size:2rem;
+    }
+
+    .image-section {
+        width: 50%; /* Adjust width as needed */
+    }
+    .image-section img {
+        height: 380px;
+        margin-left:25%;
+    }
+}

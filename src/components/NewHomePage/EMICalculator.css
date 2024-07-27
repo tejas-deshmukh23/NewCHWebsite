@@ -1,0 +1,327 @@
+/* EmiCalculator.css */
+
+/* Reset margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.emi-right h1{
+  font-size: 3rem;
+  color: #3e2780;
+  font-weight: normal;
+}
+.emi-right p{
+  font-size: 18px;
+  color: #000000a6;
+}
+/* Set padding around the entire calculator container */
+.emi-calculator-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Allow elements to wrap to the next line if necessary */
+  width: 100vw;
+  gap: 20px; /* Spacing between flex items */
+}
+
+/* Styles for the left side containing the EMI calculator */
+.emi-left {
+  flex: 1; /* Take up remaining space */
+  padding: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the right side containing the chart and EMI details */
+.emi-right {
+  flex: 1; /* Take up remaining space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for the slider containers */
+.slider-container {
+  margin-bottom: 20px;
+  margin-top: 40px;
+  color: #000000a6;
+  font-size: 18px;
+}
+
+    /* Style for the calculate button */
+    .emibutton {
+      margin-top: 10px;
+     padding: 10px 10px;
+      background-color: #3e2780;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      width: 40%;
+      
+      border-radius: 4px;
+      margin-left: 30%;
+    }
+
+/* Style for the chart container */
+.chart-container {
+  max-width: 300px;
+  margin: 0 auto;
+  
+}
+
+/* Additional content below the EMI calculator */
+.additional-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Allow elements to wrap to the next line if necessary */
+  gap: 20px; /* Spacing between flex items */
+  margin-top: 5%; /* Space between the calculator and additional content */
+  margin-left: 5%;
+  width: 90%; /* Ensure full width of the container */
+  padding: 20px; /* Add padding around the container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for styling */
+}
+
+.additional-content h1 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+.additional-content img {
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
+  height: auto; /* Maintain aspect ratio */
+  width: 400px; /* Customize image width */
+  margin-left: -100px;
+}
+
+.textcontent {
+  width: 90%; /* Ensure full width of the container */
+  padding: 20px; /* Add padding around the container */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for styling */
+  margin-left: 5%;
+}
+
+.textcontent h2 {
+  margin-left: 5%;
+  font-size: 1.6rem;
+  font-weight: normal;
+}
+
+.textcontent p {
+  font-size: 1.5rem;
+  margin-left: 8.5%;
+  color: #000000a6;
+}
+
+.number-e {
+  display: inline-block;
+  text-align: center;
+  color: white;
+  background-color: #3e2780;
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  border-radius: 50px;
+}
+
+.benefitss {
+  margin-top: 5%;
+}
+
+.benefitst {
+  margin-top: 5%;
+}
+
+.benefitsf {
+  margin-top: 5%;
+}
+
+/* Customize the color of the range input track */
+input[type="range"] {
+  width: 100%; /* Full width of the container */
+  height: 8px; /* Height of the track */
+  background-color: #3e2780; /* Desired color for the track */
+  outline: none; /* Remove default focus styling */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Optional: Customize the appearance of the thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Remove default styling */
+  appearance: none;
+  width: 16px; /* Width of the thumb */
+  height: 16px; /* Height of the thumb */
+  border-radius: 50%; /* Rounded shape */
+  background-color: #fff; /* Color of the thumb */
+  cursor: pointer; /* Cursor type */
+}
+.amountleft{
+  color:#3e2780;
+  font-size: 18px;
+  margin-left: 5%;
+  
+}
+.amountright{
+  color: #3e2780;
+  font-size: 18px;
+  margin-left: 70%;
+  margin-top: -8%;
+}
+.totalamount{
+  margin-left: 40%;
+  color: #3e2780;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .emi-calculator-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .emi-calculator-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap; /* Allow elements to wrap to the next line if necessary */
+      width: 100vw;
+      gap: 20px; /* Spacing between flex items */
+    }
+    
+    /* Styles for the left side containing the EMI calculator */
+    .emi-left {
+      flex: 1; /* Take up remaining space */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Styles for the right side containing the chart and EMI details */
+    .emi-right {
+      flex: 1; /* Take up remaining space */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .emi-right p{
+      font-size: 18px;
+    }
+    .emi-right h1{
+      font-size: 28px;
+      color: #3e2780;
+      font-weight: normal;
+    }
+    
+    /* Style for the slider containers */
+    .slider-container {
+      margin-bottom: 20px;
+      margin-top: 40px;
+      font-size: 18px;
+      font-weight: normal;
+    }
+    
+
+    
+    /* Style for the chart container */
+    .chart-container {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    
+    /* Additional content below the EMI calculator */
+    .additional-content {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap; /* Allow elements to wrap to the next line if necessary */
+      gap: 20px; /* Spacing between flex items */
+      margin-top: 10%; /* Space between the calculator and additional content */
+      margin-left: 5%;
+      width: 90%; /* Ensure full width of the container */
+      padding: 20px; /* Add padding around the container */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for styling */
+    }
+    
+    .additional-content h1 {
+      font-size: 28px;
+    }
+    
+    .additional-content img {
+      max-width: 100%; /* Ensure the image doesn't exceed its container */
+      height: auto; /* Maintain aspect ratio */
+      width: 400px; /* Customize image width */
+      margin-left: -100px;
+    }
+    
+    .textcontent {
+      width: 90%; /* Ensure full width of the container */
+      padding: 20px; /* Add padding around the container */
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for styling */
+      margin-left: 5%;
+    }
+    
+    .textcontent h2 {
+      font-size: 19px;
+      font-weight: normal;
+    }
+    
+    .textcontent p {
+      font-size: 16px;
+      margin-left: 15%;
+    }
+    
+    .number-e {
+      display: inline-block;
+      text-align: center;
+      color: white;
+      background-color: #3e2780;
+      height: 30px;
+      width: 30px;
+      padding: 5px;
+      border-radius: 50px;
+    }
+    
+    .benefitss {
+      margin-top: 5%;
+    }
+    
+    .benefitst {
+      margin-top: 5%;
+    }
+    
+    .benefitsf {
+      margin-top: 5%;
+    }
+    
+    /* Customize the color of the range input track */
+    input[type="range"] {
+      width: 100%; /* Full width of the container */
+      height: 8px; /* Height of the track */
+      background-color: #3e2780; /* Desired color for the track */
+      outline: none; /* Remove default focus styling */
+      border-radius: 5px; /* Rounded corners */
+    }
+    
+    /* Optional: Customize the appearance of the thumb */
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; /* Remove default styling */
+      appearance: none;
+      width: 16px; /* Width of the thumb */
+      height: 16px; /* Height of the thumb */
+      border-radius: 50%; /* Rounded shape */
+      background-color: #fff; /* Color of the thumb */
+      cursor: pointer; /* Cursor type */
+    }
+    .amountleft{
+      color:#3e2780;
+      margin-left: 5%;
+    }
+    .amountright{
+      color: #3e2780;
+      margin-left: 70%;
+      margin-top: -18%;
+    }
+    .totalamount{
+      margin-left: 35%;
+      color: #3e2780;
+    }
+}

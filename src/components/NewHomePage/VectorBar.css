@@ -1,0 +1,65 @@
+/* VectorBar.css */
+
+.vector-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Gap between grid items */
+    justify-content: center; /* Center align items horizontally */
+    align-items: center; /* Center align items vertically */
+    background-color: #3e2780; /* Example background color */
+    padding: 15px;
+    height: auto; /* Adjust height as needed */
+    margin-top: 60px;
+}
+
+.vector-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center align text */
+    gap:10px;
+}
+
+@media (min-width: 768px) {
+.vector-item img {
+   
+    height: 30%; /* Maintain aspect ratio */
+    margin-bottom: 10px; /* Space between image and text */
+}
+
+.vector-item p {
+    color: white; /* Text color */
+    font-size: 15px; /* Adjust font size as needed */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Show ellipsis (...) for overflow text */
+    font-weight: bold;
+}
+}
+@media (max-width: 768px) {
+    .vector-bar {
+        grid-template-columns: repeat(3, 1fr); /* Three columns on mobile */
+        padding: 5px; /* Adjust padding */
+        height: 90px;
+        justify-content: center;
+        padding-top: 15px;
+    }
+
+    .vector-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center; /* Center align text */
+        gap:5px;
+        font-size: 12px;
+        font-weight: bold;
+        color: white;
+        height: 100%;
+    }
+    .vector-item img {
+   
+        height: 20%; /* Maintain aspect ratio */
+       
+    }
+    
+}

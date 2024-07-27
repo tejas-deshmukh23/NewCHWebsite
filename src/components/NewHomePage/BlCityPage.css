@@ -1,0 +1,218 @@
+.Bl-city-sect{
+    padding: 20px;
+}
+.Bl-city-page-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+    margin: 0 auto;
+    
+  }
+  .image-container-Bl-city{
+    width: 100%;
+  }
+  
+  .Bl-city-text-section {
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .Bl-city-text-section h1 {
+    font-size: 3rem;
+    color: #3e2780;
+    font-family: 'Open Sans', sans-serif;
+
+  }
+  .Bl-safe-secure{
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #000000a6;
+    font-family: 'Open Sans', sans-serif;
+
+  }
+  .Bl-city-text-section p {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #000000a6;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .apply-button-Bl-city {
+    height: 50px;
+    width: 30%;
+    font-size: 1.2rem;
+    background-color: #3e2780;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+  }
+  .content-of-Bl-city h1{
+    font-size: 3rem;
+    color: #3e2780;
+    margin-left: 2%;
+    font-family: 'Open Sans', sans-serif;
+    
+    font-weight: normal;
+  }
+  .content-of-Bl-city p{
+    font-size: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+
+  }
+ 
+ 
+  /* FAQ Section Styles */
+
+
+.faq-item-bl{
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.faq-answer-bl{
+  margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+  .faq-container-bl h1{
+    text-align: center;
+    font-size: 3 rem;
+    color: #3e2780;
+    padding-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+.faq-question-bl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.arrowsbl {
+    font-size: 14px;
+    transition: transform 0.3s ease; /* Smooth arrow rotation transition */
+}
+
+.arrowsbl.expanded {
+    transform: rotate(180deg); /* Rotate arrow when expanded */
+}
+
+.faq-answer-bl {
+    margin-top: 10px; /* Margin above answer */
+    font-family: 'Open Sans', sans-serif;
+   
+}
+
+.faq-answer-bl p {
+    margin: 0; /* Remove default margin for paragraphs */
+}
+
+.Bl-city-image-section {
+    position: relative;
+    text-align: center;
+}
+
+.Bl-city-image-section img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 400px; /* Adjust maximum height as per your requirement */
+    width: auto; /* Maintain aspect ratio */
+    
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%; /* Adjust the width of the gradient overlay as needed */
+    height: 100%;
+    background: linear-gradient(to right, rgb(255 255 255) 30%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+
+  
+  @media (max-width: 768px) {
+    .Bl-city-sect{
+        padding: 5px;
+    }
+    .Bl-city-page-container {
+      grid-template-columns: 1fr; /* Single column layout for mobile */
+      padding: 5px;
+    }
+    .apply-button-Bl-city {
+        height: 40px;
+        width: 50%;
+        font-size: 1rem;
+        background-color: #3e2780;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+        border: none;
+        transition: background-color 0.3s ease;
+        margin-bottom: 20px;
+      }
+      
+    .Bl-city-text-section h1 {
+        font-size: 28px;
+        font-family: 'Open Sans', sans-serif;
+      }
+      .Bl-safe-secure{
+        font-size: 14px;
+        margin-bottom: 10px;
+        color: #000000a6;
+        font-family: 'Open Sans', sans-serif;
+
+      }
+      .Bl-city-text-section p {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #000000a6;
+        font-family: 'Open Sans', sans-serif;
+      }
+      .content-of-Bl-city{
+        padding-top: 20px;
+      }
+      .content-of-Bl-city h1{
+        font-size: 28px;
+        padding: 10px;
+        font-family: 'Open Sans', sans-serif;
+      }
+      .content-of-Bl-city p{
+        font-size: 18px;
+        font-family: 'Open Sans', sans-serif;
+    
+      }
+      .Bl-city-image-section {
+        text-align: left;
+      }
+      .Bl-city-image-section img {
+        max-width: 100%;
+        height: 100%;
+        margin: 0;
+      }
+      .faq-container-bl h1{
+          font-size: 28px;
+          color: #3e2780;
+          padding-bottom: 20px;
+          font-weight: normal;
+      }
+      .faq-question-bl{
+        font-size: 18px;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .faq-answer-bl{
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+    }
+    
+      
+  }
+  

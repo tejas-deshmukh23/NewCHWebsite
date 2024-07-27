@@ -1,0 +1,13 @@
+/* RatingStars.css */
+
+.star-icon {
+  color:#ffd700; /* Default color for empty stars */
+}
+
+.star-icon.filled {
+  color: #ffd700; /* Golden color for filled stars */
+}
+
+.star-icon.half-filled {
+  color: #ffd700; /* Golden color for half-filled star */
+}

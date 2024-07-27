@@ -1,0 +1,79 @@
+.city-info {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .info-container {
+    display: flex;
+    
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .info-item {
+    flex: 0 0 auto;
+    width: calc(25% - 20px);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    scroll-snap-align: start;
+  }
+  
+  .info-item h3 {
+    font-size: 1.5rem;
+    color: #3e2780;
+    font-weight: normal;
+  }
+  
+  .info-item p {
+    font-size: 1.2rem;
+    color: #000000a6;
+  }
+  
+  .dots {
+    display: none; /* Initially hide dots on desktop */
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #3e2780;
+  }
+  
+  @media (max-width: 768px) {
+    .info-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 40px; /* Adjust gap between items */
+        padding: 10px;
+      }
+      
+  
+    .info-item {
+        flex: 0 0 auto;
+        width: calc(100% - 20px);
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        scroll-snap-align: start;
+      }
+    .dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+  }
+  

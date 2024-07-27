@@ -1,0 +1,58 @@
+.UP-container {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column by default */
+    gap: 20px; /* Gap between grid items */
+    margin: 20px auto; /* Center align horizontally with margin */
+    max-width: 100%; /* Limit maximum width */
+    padding: 20px;
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.text-section1 {
+    padding: 10px;
+    width: 100%;
+    max-width: 100%; /* Adjust as needed */
+}
+
+.text-section1 h1,
+.text-section1 h2,
+.text-section1 p,
+.text-section1 span {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px; /* Default font size for mobile */
+}
+
+.text-section1 h1 {
+    font-size: 24px;
+}
+
+.text-section1 h2 {
+    font-size: 20px;
+    color: #3e2780;
+}
+
+.text-section1 p {
+    font-size: 16px;
+}
+
+.image-section {
+    width: 100%;
+}
+
+/* Media query for desktop view */
+@media (min-width: 768px) {
+    .UP-container {
+        grid-template-columns: 1fr 1fr; /* Two columns for desktop */
+        align-items: center; /* Center items vertically */
+        text-align: left; /* Align text to the left */
+    }
+
+    .text-section1 {
+        padding: 20px;
+    }
+
+    .image-section {
+        width: 100%; /* Full width for image section */
+    }
+}

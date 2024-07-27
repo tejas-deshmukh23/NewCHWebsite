@@ -1,0 +1,223 @@
+.allp-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 10px; /* Gap between columns */
+    margin: 0 auto; /* Center align horizontally */
+}
+.allp-sect h1{
+    font-size: 3rem;
+    margin-left: 20%;
+    margin-top: 30px;
+    font-weight: normal;
+}
+
+.allp-image{
+height: 500px;
+width: 400px;
+margin-left: 5%;
+margin-top: 10px;
+background:none;
+}
+.credit-haat-color {
+    color: #3e2780;
+  }
+  
+  .partner-details {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 10%;
+    width:80%;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .partner-details-container {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    margin-top: -200px;
+    margin-left: 10%;
+    width:80%;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .partner-logo {
+    height: 50px;
+    width: 60px;
+    margin-right: 20px;
+    padding-bottom: 10px;
+  }
+  
+  .partner-info {
+    flex: 1;
+  }
+  
+  .partner-info-header {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+  }
+  
+  .partner-info-content {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .partner-buttons {
+    display: flex;
+    align-items: center; /* Adjust alignment if needed */
+    padding-left: 50%;
+  }
+  .apply-now-button{
+    background-color: #3e2780;
+    color: white;
+    border-radius: 10px;
+    margin-left: 50%;
+    margin-top: -100px;
+    padding: 5px;
+  }
+  
+  .know-more-button {
+    margin-left: 30px; /* Adjust spacing between buttons */
+    background-color: #3e2780;
+    color: white;
+    border-radius: 10px;
+    margin-top: -100px;
+padding: 5px;
+   
+  }
+
+ .close-button {
+    background: #3e2780;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Times New Roman', serif;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+  } 
+  
+  .apply-now-button:hover,
+  .know-more-button:hover,
+   .close-button:hover {
+    background: #542784;
+  }
+   
+  .dialog-content {
+    margin-top: 20px;
+    font-family: 'Open Sans', sans-serif;
+    color: #3e2780;
+    font-size: 16px;
+  }
+  
+  .dialog-text {
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 10px;
+  }
+  
+
+  /* Media Query for Mobile View */
+@media (max-width: 768px) {
+    .allp-container {
+      grid-template-columns: 1fr; /* Single column layout for mobile */
+      gap: 10px;
+    }
+  
+    .allp-sect h1{
+        font-size: 28px;
+        margin-left: 10%;
+        margin-top: 10px;
+    }
+    
+    .allp-image{
+    height: 200px;
+    width: auto;
+    margin-left: -10%;
+    margin-top: 10px;
+    }
+    .credit-haat-color {
+        color: #3e2780;
+      }
+      
+      .partner-details {
+        font-family: 'Open Sans', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        margin-top: 20px;
+        margin-left: 10%;
+        width:80%;
+        background-color: #f7f7f7;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .partner-details-container {
+        font-family: 'Open Sans', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        margin-top: 40px;
+        margin-left: 10%;
+        width:80%;
+        background-color: #f7f7f7;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .partner-logo {
+        height: 50px;
+        width: 60px;
+        margin-right: 20px;
+        padding-bottom: 10px;
+      }
+      
+      .partner-info {
+        flex: 1;
+      }
+      
+      .partner-info-header {
+        font-family: 'Open Sans', sans-serif;
+        margin-bottom: 10px;
+      }
+      
+      .partner-info-content {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        color: #333;
+      }
+  
+    .partner-buttons {
+      /* display: flex; */
+      /* flex-direction: column; Stack buttons vertically */
+      /* align-items: flex-start; Adjust alignment as needed */
+      margin-top: 80px;
+      margin-left: -55%;
+    }
+  
+    .apply-now-button,
+    .know-more-button {
+      width: 100%; /* Full width buttons */
+      margin-left: 15px;
+    }
+  }

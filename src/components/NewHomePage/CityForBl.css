@@ -1,0 +1,23 @@
+.footer{
+    background-color: #291661;
+    color: white;
+}
+.p{
+    color: white;
+}
+.container{
+    padding: 5px;
+}
+.copy-right-content{
+    padding-left: 10px;
+}
+
+.citylist a{
+    color: white;
+    text-decoration: none;
+}
+.container a{
+    text-decoration: none;
+}
+
+

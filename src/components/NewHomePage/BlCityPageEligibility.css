@@ -1,0 +1,74 @@
+
+/*-----------------------------------css of table Section--------------------------------------------*/
+.firstcomp-Bl-city {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the tables */
+    gap: 20px; /* Adjust the gap between tables */
+    padding: 20px; /* Add padding to the container */
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .table-center-bl {
+    width: 100%; /* Take full width initially */
+    border: 1px solid #ddd; /* Add border to tables */
+    border-collapse: collapse; /* Collapse border spacing */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .table-center-bl th,
+  .table-center-bl td {
+    
+    padding: 5px;
+    text-align: left;
+    border: 1px solid #ddd; /* Add border to all sides of th and td */
+  }
+  
+  
+  .table-center-bl ul{
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  .table-center-bl th{
+    background-color:rgba(62, 39, 128, 0.29);
+    font-size: 30px;
+  }
+  .table-center-bl p{
+  font-size: 1.5rem;
+  color: #000000a6;
+  
+  }
+  /*--------------------------------------Desktop view---------------------------------------------------*/
+  @media (min-width: 768px) {
+    .table-center-bl {
+      width: 35%; /* Adjust width for desktop view */
+    }
+    .table-center-bl th{
+        background-color:rgba(62, 39, 128, 0.29);
+        font-size: 30px;
+    }
+    .table-center-bl p{
+      font-size: 1.3rem;
+      color: #000000a6;
+  
+    }    
+  }
+  
+  /*------------------------------------Mobile View------------------------------------------------*/
+  
+  @media (max-width: 768px) {
+      .table-center-bl{
+        width: 100%; /* Adjust width for desktop view */
+      }
+      .table-center-bl th{
+        font-size: 25px;
+        background-color:rgba(62, 39, 128, 0.29);
+      }
+      .table-center-bl p{
+        font-size: 18px;
+        color: #000000a6;
+      }
+      
+  }
+  

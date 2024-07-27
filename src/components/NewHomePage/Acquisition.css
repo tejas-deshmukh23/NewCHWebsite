@@ -1,0 +1,75 @@
+/* Desktop View */
+@media (min-width: 768px) {
+    .acq-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Two equal columns */
+      gap: 20px; /* Gap between columns */
+      margin: 0 auto; /* Center align horizontally */
+      max-width: 100%; /* Limit maximum width */
+      padding: 20px; /* Add padding around the container */
+
+    }
+
+  
+    .logo-sect img {
+      height: 50px;
+      width: auto;
+      margin-left: 30px;
+    }
+  
+
+  
+    .logo-sect h1 {
+      font-size: 3rem;
+      margin-left: 20px;
+      color: #3e2780;
+      font-weight: normal;
+    }
+    .logo-sect p {
+      font-size: 1rem; /* Adjust font size */
+      text-align: left; /* Center align text */
+      margin-bottom: 20px; /* Add space below */
+      color: #000000a6;
+    }
+  }
+  
+  /* Mobile View */
+  @media (max-width: 768px) {
+    .acq-container {
+      display: block; /* Stack elements vertically */
+      padding: 20px; /* Add padding around the container */
+      
+    }
+   
+    .logo-sect h1 {
+      font-size: 28px; /* Adjust font size */
+      margin-left: 10px; /* Center align */
+      text-align: left; /* Center align text */
+      margin-bottom: 10px; /* Add space below */
+      color: #3e2780;
+      font-weight: normal;
+      
+    }
+  
+    .logo-sect img {
+      height: 40px;
+      width: auto;
+      display: block; /* Ensure image is centered */
+      margin-bottom: 10px; /* Add space below */
+    }
+  
+    .logo-sect p {
+      font-size: 18px; /* Adjust font size */
+      text-align: left; /* Center align text */
+      margin-bottom: 20px; /* Add space below */
+      color: #000000a6;
+    }
+  
+    .acqi-sect img {
+      width: 100%; /* Make the image responsive */
+      height: 80%;
+      margin: 0 auto; /* Center align */
+      display: block; /* Ensure image is centered */
+    }
+  }
+  

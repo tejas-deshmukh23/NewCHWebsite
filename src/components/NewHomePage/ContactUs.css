@@ -1,0 +1,157 @@
+.contactus-head{
+    padding: 10px;
+}
+.contactus-head h1{
+    font-size: 3rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;
+    color: #3e2780;
+    
+
+}
+.contact-us-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 20px; /* Gap between columns */
+    margin: 0 auto; /* Center align horizontally */
+    padding: 20px;
+}
+
+.image-container-contact {
+    grid-column: 1 / 2; /* Image container spans first column */
+    grid-row: 1; /* Image container in first row */
+}
+
+.image-container-contact img {
+    max-width: 100%; /* Ensure image fits container */
+    height: 100%;
+    display: block; /* Prevents unwanted space beneath image */
+}
+
+.form-container-contact {
+    grid-column: 2 / 3; /* Form container spans second column */
+    grid-row: 1; /* Form container in first row */
+}
+
+.form-container-contact form {
+    background-color: #fff;
+    padding: 20px;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container-contact h2 {
+    text-align: left;
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+    color: #3e2780;
+
+}
+.form-container-contact p{
+    font-size: 1.5rem;
+    color: #000000a6;
+}
+
+.form-group-contact {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #000000a6;
+
+}
+
+
+
+button:hover {
+    background-color: #3e2780;
+}
+
+.support-options-container {
+    display: flex;
+    justify-content:center;
+}
+
+.support-option {
+    text-align: center;
+    margin: 10px; /* Adjust spacing between options */
+    border-radius: 20px;
+    flex-basis: calc(20.33% - 10px); /* Adjust width for each option */
+}
+
+
+
+
+.support-option img {
+    width: 50%;
+    height: 100%;
+}
+
+
+
+.support-option img:hover {
+    background-color: #3e2780;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .contactus-head{
+        padding: 20px;
+    }
+    .contactus-head h1{
+        font-size: 28px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: normal;
+        color: #3e2780;
+        
+    
+    }
+    .contact-us-container {
+        grid-template-columns: 1fr; /* Single column layout for mobile */
+    }
+
+    .form-container-contact {
+        grid-column: 1 / 2; /* Form container spans full width */
+        grid-row: 2; /* Form container in second row */
+    }
+    .form-container-contact form{
+        width: 100%;
+    }
+    .form-container-contact p{
+        font-size: 18px;
+        color: #000000a6;
+    }
+    .support-option {
+        text-align: center;
+        margin: 10px; /* Adjust spacing between options */
+        border-radius: 20px;
+        flex-basis: calc(28.33% - 2px); /* Adjust width for each option */
+    }
+    .support-options-container {
+        flex-direction: row; /* Stack options vertically on mobile */
+        align-items: center; /* Center items horizontally */
+    }
+    .support-option img {
+        width: 50%;
+        height: 100%;
+    }
+    
+
+    .support-option img:hover {
+        background-color: #3e2780;
+    }
+    
+}

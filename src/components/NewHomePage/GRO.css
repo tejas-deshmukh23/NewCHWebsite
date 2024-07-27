@@ -1,0 +1,106 @@
+.gro-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  justify-content: space-around;
+  text-align: left;
+}
+/* Desktop View */
+@media (min-width: 768px) {
+  
+  .gro-container{
+    align-items: center;
+    
+  }
+  .image-section-gro img{
+    height: 380px;
+  }
+  .content-of-gro{
+    padding: 20px;
+  }
+  .content-of-gro1{
+    padding: 20px;
+  }
+  
+    .content-of-gro p{
+        font-size: 1rem;
+        color:#000000a6;
+      }
+      .content-of-gro h2{
+        font-size: 1.6rem;
+        color:#3e2780;
+      }
+      .content-of-gro1 h2{
+        font-size: 1.6rem;
+        color:#3e2780;
+    
+      }
+    
+  .text-part-gro{
+    padding: 20px;
+  }
+  
+    .text-content-gro h1 {
+      font-size: 3rem;
+      text-align: left;
+      margin-top: -15%;
+      margin-left: 5%;
+    }
+    .content-of-gro1 {
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+    }
+    
+    .additional-info {
+        font-size: 25px;
+        color: #000000a6;
+    }
+ 
+  }
+  
+  /* Mobile View */
+  @media (max-width: 767px) {
+    .gro-container {
+      display: block; /* Stack elements vertically */
+      padding: 20px; /* Add padding around the container */
+      font-weight: normal;
+    }
+  
+    .text-content-gro h1 {
+      font-size: 28px; /* Adjust font size */
+      margin-left: 0; /* Center align */
+      text-align: left; /* Center align text */
+      margin-bottom: 10px; /* Add space below */
+    }
+  .content-of-gro p{
+    font-size: 18px;
+    color: #000000a6;
+
+  }
+  .content-of-gro h2{
+    font-size: 22px;
+    color:#3e2780;
+  }
+  .content-of-gro1 h2{
+    font-size: 22px;
+    color:#3e2780;
+
+  }
+  
+  .image-section-gro img{
+      width: 100%; /* Make the image responsive */
+      height: auto;
+     
+      display: block; /* Ensure image is centered */
+    }
+    .content-of-gro1 {
+        display: flex;
+        flex-direction: row;
+        align-items: left;
+    }
+    
+    .additional-info {
+        font-size: 18px;
+        color: #000000a6;
+    }
+  }

@@ -1,0 +1,48 @@
+/* GridContainer.module.css */
+.Support-s h1{
+  font-size: 3rem;
+  color: #3e2780;
+}
+
+.gridContainer-s {
+
+    width: 100%;
+   
+   
+   
+
+  }
+  
+  .gridItem-s {
+    min-width: 0; /* Prevent items from expanding beyond container */
+    /* background-color: #f0f0f0; Example background color */
+    text-align: center; /* Example center alignment */
+  }
+
+  @media screen and (min-width: 768px){
+    .support-partner-img{
+        height: 50%;
+        width: auto;
+    }
+  
+    
+
+  }
+  
+  @media screen and (max-width: 768px) {
+    .Support-s h1{
+      font-size: 28px;
+    }
+    .support-partner-img{
+        height: 100%;
+        width: 50%;
+        margin-top:10px;
+      
+    }
+        
+
+    .gridItem-s {
+      flex-basis: calc(100% - 20px); /* Adjust based on gap and number of columns */
+    }
+  }
+  

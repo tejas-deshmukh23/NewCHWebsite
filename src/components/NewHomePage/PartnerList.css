@@ -1,0 +1,77 @@
+/* Partnerlist.css */
+
+.partner-list-container {
+    overflow: hidden; /* Hide overflowing content */
+    margin: auto; /* Center align the container */
+ 
+}
+
+.partner-heading{
+    margin-top: 15px; /* Margin top for the heading */
+    text-align: center; /* Center align the heading */
+    font-family: 'Open Sans', sans-serif; /* Optional: Specify font family */
+    font-size: 2.5rem;    
+    padding-top: 20px;
+    font-weight: normal;
+    color: #3e2780;
+}
+
+.lenders {
+    margin-top: 15px; /* Margin top for the lenders section */
+    display: flex; /* Display as flex container */
+    justify-content: center; /* Center align items horizontally */
+}
+
+.brandcontainer {
+    display: flex; /* Flex container for brands */
+    flex-wrap: wrap; /* Allow brands to wrap to the next line */
+    justify-content: center; /* Center align items horizontally */
+}
+
+.brandboxes {
+    margin: 10px; /* Margin around each brand */
+    text-align: center; /* Center align brand content */
+    padding: 40px;
+}
+
+.brand-img {
+    
+    max-width: 80%; /* Fixed width for brand images */
+    max-height: 50px; /* Optional: Max height for brand images */
+    border-radius: 2px; /* Optional: Add border radius */
+}
+
+
+.view-all-container {
+    text-align: center; /* Center align the "View All" link */
+    margin-top: 20px; /* Add space between brands and "View All" */
+}
+
+.view-all-link {
+    color: #3e2780; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Font size */
+}
+
+.view-all-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+@media (max-width: 768px) {
+ 
+    .brand-img {
+        height: auto; /* Maintain aspect ratio */
+        width: 70px; /* Fixed width for brand images */
+        max-height: 40px; /* Optional: Max height for brand images */
+        border-radius: 2px; /* Optional: Add border radius */
+    }
+    .partner-heading{
+        font-size: 28px;
+
+    }
+    
+    .brandboxes {
+        margin: 10px; /* Margin around each brand */
+        text-align: center; /* Center align brand content */
+        padding: 8px;
+    }
+    }

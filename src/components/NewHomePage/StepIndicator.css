@@ -1,0 +1,86 @@
+.step-sect {
+  padding: 5px;
+  padding-top: 20px;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2px;
+  /* padding: 20px; */
+  width: 100%;
+  /* margin: 20px auto; */
+}
+.step-indicator2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2px;
+  /* padding: 20px; */
+  width: 100%;
+  /* margin: 20px auto; */
+  margin-bottom: 20px;
+}
+
+.step-sect h1 {
+  text-align: center;
+  font-size: 3rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.step-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #3e2780;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative; /* Added */
+}
+
+.step-text {
+  margin-top: 10px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  color: #000000a6;
+  font-size: 1.5rem;
+}
+
+.step:last-child .step-circle::after {
+  display: none; /* Hide the line after the last circle */
+}
+
+@media (max-width: 768px) {
+  .step-indicator{
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .step-sect h1 {
+    text-align: center;
+    font-size: 28px;
+  }
+
+  .step-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem; /* Adjust font size for smaller screens */
+    margin-right: 0; /* Remove margin-right */
+  }
+  .step-text {
+    margin-top: 5px; /* Adjust margin for smaller screens */
+    text-align: center;
+    font-size: 18px;
+  }
+ 
+
+}

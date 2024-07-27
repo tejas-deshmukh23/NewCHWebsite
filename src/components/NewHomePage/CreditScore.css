@@ -1,0 +1,281 @@
+.creditscore-heading{
+  padding: 20px;
+}
+/* FAQ Section Styles */
+
+.faq-item1{
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+.faq-answer1{
+    font-size: 20px;
+    font-weight: normal;
+}
+  
+  .verify-button {
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: #3e2780;
+    color: #fff;
+    font-size: 16px;
+  }
+  
+
+.faq-question1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: 'Open Sans', sans-serif;
+    
+}
+
+.arrow {
+    font-size: 14px;
+    transition: transform 0.3s ease; /* Smooth arrow rotation transition */
+}
+
+.arrow.expanded {
+    transform: rotate(180deg); /* Rotate arrow when expanded */
+}
+
+.faq-answer1 {
+    margin-top: 10px; /* Margin above answer */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+   
+}
+
+.faq-answer1 p {
+    margin: 0; /* Remove default margin for paragraphs */
+}
+/* CreditScore.css */
+
+.container-c {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+}
+
+.left-side {
+    padding: 20px;
+}
+
+.right-side {
+    padding: 20px;
+}
+.left-side h2{
+    color: #000000a6;
+    font-size: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+    margin-right: 49%;
+}
+.creditscore-heading h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #3e2780;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.form1 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    align-items: center; /* Center align items horizontally */
+    margin-top: 20px;
+    max-width: 400px; /* Adjust the max-width as needed */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.input-group input, .input-group textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #000000a6;
+    margin-bottom: 20px; /* Adjust the margin between inputs */
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px; /* Adjust margin as needed */
+}
+
+.send-otp-button {
+    padding: 10px;
+    width: 50%; /* Button width set to 50% of its container */
+    font-size: 16px;
+    background-color: #3e2780;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #572d91; /* Darker shade of purple for hover effect */
+}
+.css-h{
+  font-size: 28px;
+}
+.terms-text-cs{
+  font-size: 18px;
+  font-weight: normal;
+  color: #000000a6;
+}
+.image {
+    max-width: 100%;
+}
+.faq-container1 h1{
+  font-size: 3rem;
+  color: #3e2780;
+  font-weight: normal;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width:768px){
+ 
+    .container-c {
+        display: flex; /* Use flexbox for mobile layout */
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align items */
+      }
+      
+      .faq-container1 h1{
+        font-size: 28px;
+        color: #3e2780;
+      }
+      .left-side {
+        text-align: center; /* Center align text */
+        padding: 0 20px; /* Adjust padding */
+        order: 2; /* Change order to place text below image */
+      }
+      
+.right-side{
+    order: 1; /* Change order to place image above text */
+    margin-bottom: 20px; /* Add space below image */
+  }
+  
+  .right-side img {
+    width: 100%; /* Make the image responsive */
+      height: 80%;
+      margin: 0 auto; /* Center align */
+      margin-top: -60px;
+  }
+      
+
+    .left-side{
+        width:auto;
+    }
+    .left-side h2{
+        color: #000000a6;
+        font-size: 18px;
+        font-family: 'Open Sans', sans-serif;
+        margin-right: 20%;
+    }
+    .creditscore-heading h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+        color: #3e2780;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .faq-question1{
+      font-size: 18px;
+      font-family: 'Open Sans', sans-serif;
+
+    }
+    .faq-answer1{
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .otp-container {
+    
+        /* transition: opacity 0.3s ease; */
+        height: 10%;
+        text-align: left;
+        padding: 20px;
+        border-radius: 8px;
+      }
+      
+      /* .otp-container.visible {
+        opacity: 1;
+      } */
+      .terms-text{
+        font-size: 14px;
+        color: #000000a6;
+      }
+      
+      .otp-inputs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      
+      .otp-inputs input {
+        width: 20px;
+        height: 20px;
+        margin: 0 10px;
+        text-align: center;
+        font-size: 14px;
+        border: 1px solid #3e2780;
+        border-radius: 4px;
+      }
+      
+      .otp-inputs input:focus {
+        border-color: #3e2780;
+        outline: none;
+      }
+      
+    
+}
+
+/*----------------------------desktop view--------------------------------------------*/
+@media (min-width: 768px) {
+    .container-c{
+        grid-template-columns: 1fr 1fr;
+        margin-top: -50px;
+    }
+
+    .form1 {
+        max-width: 100%;
+    }
+      /* .otp-container.visible {
+        opacity: 1;
+      } */
+      
+      .otp-inputs {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+      
+      .otp-inputs input {
+        width: 25px;
+        height: 30px;
+        margin: 0 10px;
+        text-align: center;
+        font-size: 18px;
+        border: 1px solid #3e2780;
+        border-radius: 4px;
+      }
+      
+      .otp-inputs input:focus {
+        border-color: #3e2780;
+        outline: none;
+      }
+      
+}

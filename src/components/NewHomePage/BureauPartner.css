@@ -1,0 +1,44 @@
+/* BureauPartner.css */
+
+.bureau-partner {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align content horizontally */
+    justify-content: center; /* Center align content vertically */
+    padding: 10px;
+    background-color: white; /* Example background color */
+    color: #3e2780;
+    margin-top: 30px;
+}
+.bureau-partner h1 {
+    font-size: 3rem; /* Adjust font size for mobile */
+    font-weight: normal;
+    margin-bottom: 10px; /* Adjust margin below heading */
+    text-align: center; /* Center align heading */
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.logo-container-b {
+    display: flex;
+    justify-content: center; /* Center align items horizontally */
+    align-items: center; /* Center align items vertically */
+}
+
+.bureau-logo {
+    max-width:15%; /* Ensure logo fits within its container */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 10px; /* Adjust margin above logo */
+}
+
+@media (max-width: 768px) {
+    .bureau-partner h1 {
+        font-size: 28px; /* Adjust font size for mobile */
+        font-weight: normal;
+    }
+    .bureau-logo {
+        max-width:40%; /* Ensure logo fits within its container */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: 10px; /* Adjust margin above logo */
+    }
+}

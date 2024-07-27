@@ -1,0 +1,147 @@
+.bbloancontainer {
+  margin-top: 20px;
+}
+
+.bbloanrow {
+  display: flex;
+  align-items: center;
+}
+
+
+.bbloan-col-md-6 {
+  padding: 0 15px;
+  padding-left: 5%;
+  max-width: 50%;
+}
+
+.bbloan-col-md-6-pl{
+  padding: 0 15px;
+  padding-left: 5%;
+  max-width: 40%;
+}
+
+.bbloan-image-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.bbloan-image-container img {
+  max-width: 80%;
+  height: auto;
+}
+
+.bbloan-text-container h1 {
+  font-size: 3rem;
+  color: #3e2780;
+  font-weight: normal;
+  font-family: 'Open Sans', sans-serif;
+}
+.bbloan-col-md-6-bl {
+  width: 40%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.bbloan-col-md-6-bl form{
+  background-color: #fff;
+  width: 100%;
+  border-radius: 8px;
+  
+}
+.bbloan-col-md-6 h1{
+ 
+  color: #3e2780;
+  font-size: 3rem;
+  font-weight: normal;
+}
+.bbloan-col-md-6-bl h2{
+ 
+  color: #3e2780;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.bbloan-form-group {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #000000a6;
+}
+
+.bbloan-form-control {
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+.bbloan-form-control:focus {
+  border-color: #3e2780;
+  box-shadow: 0 0 5px rgba(62, 39, 128, 0.5);
+}
+
+.bbloan-invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875rem;
+}
+.bbloan-btn-btn-primary{
+  background-color: #3e2780;
+  color: #ffffff;
+  padding: 10px;
+  width: 50%;
+  border: none;
+  border-radius: 5px;
+  margin-left: 25%;
+  }
+
+.bbloan-btn-btn-primary:hover {
+  background-color: #5f3ba6;
+}
+
+
+@media (max-width: 768px) {
+  .react-datepicker__input-container input {
+    border: none;
+    width: 177px;
+    }
+  .bbloancontainer {
+    overflow: hidden;
+  }
+  .bbloanrow {
+    flex-direction: column;
+  }
+
+  .bbloan-col-md-6 {
+    width: 100%;
+    margin-bottom: 20px;
+    max-width: 100%;
+  }
+  .bbloan-text-container h1{
+    max-width: 100%;
+    font-size: 28px;
+  }
+  .bbloan-col-md-6-bl {
+    width: 90%;
+    max-width: 100%;
+  }
+  .bbloan-col-md-6-bl h2{
+ 
+    color: #3e2780;
+    font-size: 1.6rem;
+    font-weight: normal;
+  }
+  .bbloan-col-md-6-bl form{
+    max-width: 100%;
+  }
+  .bbloan-text-container h1{
+    max-width: 100%;
+    font-size: 28px;
+  }
+  .bbloan-image-container{
+    max-width: 100%;
+    object-fit:fill;
+   
+  }
+  .bbloan-image-container img{
+    height: 150px;
+  }
+  
+}
+
