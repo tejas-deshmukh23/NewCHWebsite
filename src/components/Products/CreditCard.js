@@ -14,6 +14,10 @@ import CreditCardPageTwo from './CreditCardPageTwo';
 import CcardInfo from './CcardInfo';
 import Members from './Members';
 import CcardEMI from './CcardEMI';
+import axios from 'axios';
+import {  useLocation, useNavigate } from 'react-router-dom';
+import Loader from './Toader';
+import OtpVerifyLoader from './OtpVerifyLoader';
 
 
 function CreditCard() {
@@ -54,6 +58,32 @@ const handleToggle = (index) => {
     mobileNumber: '',
   });
 
+  // --------------------------------------------Variables for senfing data o backend ------------------------------------------------------------------------------
+
+  const location = useLocation();
+  
+  const urllink=location.search?.split('?')[1] || 'null';
+  
+  // Split the URL string by '&' to get individual key-value pairs
+  const keyValuePairs = urllink.split("&");
+
+  const [stgOneHitId, setStgOneHitId] = useState(null);
+  const [stgTwoHitId, setstgTwoHitId] = useState(null);
+  const [t_experian_log_id, sett_experian_log_id] = useState(null);
+
+  let source = null;
+  let dsa = null;
+  let channel=null;
+  let sub_source=null;
+  let sub_dsa=null;
+  let phone=null;
+  let query=null;
+
+  const [otpStatus, setOtpStatus] = useState(null);
+  const [otpLoader, setOtpLoader] = useState(false);
+
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
   const otpInputRefs = useRef([]);
 
   useEffect(() => {
@@ -62,7 +92,10 @@ const handleToggle = (index) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData.firstName);
+    console.log(formData.mobileNumber);
     if (validateForm()) {
+      handleOTPSubmit(e);
       setShowOTPModal(true);
     }
   };
@@ -111,9 +144,12 @@ const handleCloseOTPModal = () => {
 };
 
   const handleVerifyOTP = () => {
-    setOtpVerified(true);
-    setActiveContainer('formUpdated');
-    setShowOTPModal(false);
+    // setOtpVerified(true);
+    // setActiveContainer('formUpdated');
+    // setShowOTPModal(false);
+
+    handleVerification();
+
   };
 
   const handleOtpInputChange = (index, value) => {
@@ -222,9 +258,122 @@ const handleDotClick = (index) => {
   
   return () => clearInterval(interval);
   }, []);
+
+  const handleOTPSubmit= async (e)=>{
+    e.preventDefault();
+    try{
+    sessionStorage.setItem('userPhoneNumber',formData.mobileNumber);
+    const formData1 = new FormData();
+    formData1.append('userPhoneNumber',formData.mobileNumber);
+    formData1.append('firstName',formData.firstName);
+    formData1.append('lastName',formData.lastName);
+    formData1.append('dsa',dsa);
+    formData1.append('campaign',urllink);
+    formData1.append('channel',channel);
+    formData1.append('source',source);
+    formData1.append('sub_source',sub_source);
+    formData1.append('sub_dsa',sub_dsa);
+    formData1.append('phone',phone);
+    formData1.append('query',query);
+    
+    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}chfronetendotpgenerator`, formData1);
+    if(response.data.code === 0){
+    
+     setStgOneHitId(response.data.obj.stgOneHitId);
+     setstgTwoHitId(response.data.obj.stgTwoHitId);
+      sett_experian_log_id(response.data.obj.t_experian_log_id);
+    }
+    }catch(error){
+      console.log('Error:',error)
+    }
+    };
+
+    keyValuePairs.forEach(pair => {
+      // Split the key-value pair by '=' to get the key and value
+      const [key, value] = pair.split("=");
+      
+      // Check the key and assign the value to the corresponding variable
+      if (key === "source") {
+        source = value || null; // Use null if value is empty
+      } else if (key === "dsa") {
+        dsa = value || null; // Use null if value is empty
+      }
+      else if (key === "sub_source") {
+       sub_source = value || null; // Use null if value is empty
+      }
+      else if (key === "sub_dsa") {
+        sub_dsa = value || null; // Use null if value is empty
+      }
+      else if (key === "channel") {
+        channel = value || null; // Use null if value is empty
+      }
+      else if (key === "query") {
+        query = value || null; // Use null if value is empty
+      }
+      else if (key === "phone") {
+        phone = value || null; // Use null if value is empty
+      }
+      
+    });
+
+    const handleVerification = async () => {
+      setOtpLoader(true);
+      console.log('1st in');
+      try {
+        // Combine the updated OTP values into a single string
+       // const userOTP = updatedOtpValues.join('');
+       //console.log(upotp)
+        // Create form data to send to the backend
+        const formData1 = new FormData();
+       // formData.append('userPhoneNumber', upotp); // Assuming you have userPhoneNumber available
+      //  const formData = new FormData();
+       formData1.append('mobileNumber', formData.mobileNumber);
+       formData1.append('otp', otpInputs.join(""));
+      formData1.append('stgOneHitId',stgOneHitId);
+      formData1.append('stgTwoHitId',stgTwoHitId);
+      formData1.append('t_experian_log_id',t_experian_log_id);
+
+       // Send the OTP verification request to the backend
+   const response1 = await axios.post(`${process.env.REACT_APP_BASE_URL}verifyOTP`, formData1);
+
+   console.log("After response1");
+  
+   // Handle the response from the backend
+   if (response1.data.code == 0) {
+     console.log("When is 0")
+     sessionStorage.setItem('userData', JSON.stringify(response1.data.obj));
+     console.log("after when is 0")
+     setOtpVerified(true);
+    setActiveContainer('formUpdated');
+    setShowOTPModal(false);
+    // setOtpLoader(false);
+                
+    // navigate('/secondpage',);
+     console.log('OTP verification successful');
+   } else if(response1.data.code == -1) {
+     console.log('Invalid OTP');
+     setOtpStatus("Incorrect OTP! Try Again..");
+    setOtpInputs(Array(6).fill(''));
+    // setOtpLoader(false);
+    console.log("When is false or -1")
+   }else{
+    console.log('Invalid OTP');
+     setOtpStatus("Incorrect OTP! Try Again..");
+    setOtpInputs(Array(6).fill(''));
+   }
+  
+  //  else if(response1.data.code == -288){
+  //    handleCloseSnackbar();
+  //  }
+ } catch (error) {
+   console.error('Error:', error);
+ }
+};
   
   return (
     <>
+    {/* {otpLoader && <OtpVerifyLoader/>} */}
+
       <div className='Nav-Bar'>
         <NewNavBar />
       </div>
@@ -311,6 +460,7 @@ const handleDotClick = (index) => {
                     />
                   ))}
                 </div>
+                <p style={{color:'red', textAlign:'center'}}>{otpStatus}</p>
                 <div>
                   <button onClick={handleVerifyOTP} className="credit-card-btn-btn-primary">Verify OTP</button>
                 </div>

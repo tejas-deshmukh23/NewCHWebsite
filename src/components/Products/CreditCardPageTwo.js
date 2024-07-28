@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './CreditCardPageTwo.css';
 import creditcardimagesix from './ProductsImages/creditcardimagesix.png';
+import axios from 'axios';
 
 function CreditCardPageTwo({ onPrevious }) {
   const [formData, setFormData] = useState({
@@ -53,6 +54,11 @@ function CreditCardPageTwo({ onPrevious }) {
     }
   };
   
+  const handleSubmit=()=>{
+    if(validateForm){
+      handleVerification();
+    }
+  }
 
   const validateForm = () => {
     let valid = true;
@@ -85,6 +91,30 @@ function CreditCardPageTwo({ onPrevious }) {
     return valid;
   };
 
+  const handleVerification = async () => {
+    
+    try {
+
+    const no=sessionStorage.getItem('userPhoneNumber');
+    console.log("no is : ",no);
+     const formData1 = new FormData();
+     formData1.append('employee', formData.employmenttype);
+     formData1.append('income', formData.monthlyincome);
+     formData1.append('pincode',formData.pincode);
+     formData1.append('companyName',formData.companyName)
+     formData1.append('userPhoneNumber',no);
+     
+     // Send the OTP verification request to the backend
+     const response1 = await axios.post(`${process.env.REACT_APP_BASE_URL}creditcardsecond`, formData1);
+      sessionStorage.setItem('userData', JSON.stringify(response1.data.obj));
+      // navigate('/dialogb');
+      // Handle the response from the backend
+     
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="credit-card-c-container">
       <div className="credit-card-c-row">
@@ -99,7 +129,7 @@ function CreditCardPageTwo({ onPrevious }) {
         <div className="credit-card-c-col-md-6-cc">
           <div className="credit-card-c-form-container">
             <h2>Check eligibility in 2 steps</h2>
-            <form onSubmit={validateForm}>
+            <form onSubmit={handleSubmit}>
               <div className="credit-card-c-form-group">
                 {/* Removed label and added placeholder */}
                 <input

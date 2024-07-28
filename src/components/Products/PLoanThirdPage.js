@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './PLoanThirdPage.css';
 import ploanimagecorousel3 from './ProductsImages/ploanimagecorousel3.png';
+import axios from 'axios';
 
-function PLoanThirdPage({ onPrevious }) {
+function PLoanThirdPage({ onPrevious, mainFormData, getLendersList, setIsLoadingforLoader, ResidentialPincodeFlag }) {
   const [formData, setFormData] = useState({
     email: '',
     companyName: '',
@@ -11,6 +12,7 @@ function PLoanThirdPage({ onPrevious }) {
   });
 
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,13 +73,19 @@ function PLoanThirdPage({ onPrevious }) {
     }
 
     // Validate Residential Pincode (if needed)
-    if (formData.residentialPincode && (formData.residentialPincode.length !== 6 || !/^\d{6}$/.test(formData.residentialPincode))) {
-      newErrors.residentialPincode = 'Invalid pincode format';
+    if(ResidentialPincodeFlag ){
+      console.log("Residential pincode flag is : ",ResidentialPincodeFlag);
+      if (formData.residentialPincode && (formData.residentialPincode.length !== 6 || !/^\d{6}$/.test(formData.residentialPincode))) {
+        newErrors.residentialPincode = 'Invalid pincode format';
+      }
+    }else{
+      console.log("Residential pincode flag is false : ",ResidentialPincodeFlag);
     }
+    
 
     // Check for any empty fields
     Object.keys(formData).forEach((key) => {
-      if (!formData[key].trim()) {
+      if (ResidentialPincodeFlag && !formData[key].trim()) {
         newErrors[key] = 'This field is required';
       }
     });
@@ -93,10 +101,46 @@ function PLoanThirdPage({ onPrevious }) {
 
     // No errors, proceed with form submission or navigation to next step
     console.log('Form submitted:', formData);
+
+    handleAddInfoFormSubmit2(e);
   };
 
   // Determine button disabled state based on errors
   const isButtonDisabled = Object.keys(errors).some(key => errors[key]);
+
+  const handleAddInfoFormSubmit2 = async (e) => {
+    e.preventDefault();
+    try {
+
+        const formData1 = new FormData();
+        formData1.append('mobileNumber', mainFormData.mobileNumber);
+        formData1.append('email', formData.email);
+        formData1.append('pincode', formData.officePincode);
+        formData1.append('homePin', formData.residentialPincode);
+        formData1.append('companyName', formData.companyName);
+
+        setIsLoadingforLoader(true);
+
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}thirdpageNewpersonalloan`, formData1);
+
+        if (response.data.code === 0) {
+
+
+            //Here when the code is 0 we are calling lendersList backend which will give us lendersList accrding to user
+            getLendersList(e);
+
+        }
+
+
+        if (response.status === 200) {
+
+        } else {
+            console.error('Submission failed:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
+};
 
   return (
     <div className="spploancontainer">
@@ -152,7 +196,9 @@ function PLoanThirdPage({ onPrevious }) {
                 />
                 {errors.officePincode && <div className="spploan-invalid-feedback">{errors.officePincode}</div>}
               </div>
-              <div className="spploan-form-group">
+              {
+                ResidentialPincodeFlag &&
+                <div className="spploan-form-group">
                 <input
                   type="text"
                   className={`spploan-form-control ${errors.residentialPincode ? 'is-invalid' : ''}`}
@@ -167,6 +213,8 @@ function PLoanThirdPage({ onPrevious }) {
                 />
                 {errors.residentialPincode && <div className="spploan-invalid-feedback">{errors.residentialPincode}</div>}
               </div>
+              }
+              
               <button type="button" className="spploan-prev-btn-primary" onClick={onPrevious}> Previous</button>
               <button type="submit" className="spploan-btn-btn-primary" disabled={isButtonDisabled}>Submit</button>
             </form>

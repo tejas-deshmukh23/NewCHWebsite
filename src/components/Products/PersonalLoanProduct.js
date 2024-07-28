@@ -14,6 +14,11 @@ import PLoanThirdPage from './PLoanThirdPage';
 import PersonalLoan from './PLoanEMI';
 import PersonalLoanInfo from './PersonalLoanInfo';
 import Members from './Members';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+import LendersList from './LendersList';
+import Loader from './Toader';
+import OtpVerifyLoader from './OtpVerifyLoader';
 
 function PersonalLoanProduct() {
 
@@ -54,6 +59,43 @@ const handleToggle = (index) => {
 
   const otpInputRefs = useRef([]);
 
+  // ----------------------------This varibles are used to send data to backend -----------------------------------------------
+
+  const [stgOneHitId, setStgOneHitId] = useState(null);
+  const [stgTwoHitId, setstgTwoHitId] = useState(null);
+  const [t_experian_log_id, sett_experian_log_id] = useState(null);
+
+  const location = useLocation();
+  const [upotp, setUpotp] = useState('');
+  const [dobFlag, setDobFlag] = useState(true);
+  const [ResidentialPincodeFlag, setResidentialPincodeFlag] = useState(true);
+  const [otpStatus, setOtpStatus] = useState('');
+
+  const [pan, setPan] = useState('');
+  const [dob, setDob] = useState('');
+  const [income, setIncome] = useState('');
+  const [salaryType, setSalaryType] = useState('');
+
+  const [lenderDetails, setLenderDetails] = useState([]);
+  var json = null;
+  const [setLendersList, setShowLendersList] = useState(false);
+  const [showPloanSecondPage, setShowPloanSecondPage] = useState(false);
+  const [isLoading, setIsLoading] = useState(null);
+  const [otpLoader, setOtpLoader] = useState(false);
+  // --------------------------------------------------------------------------------------------------------------------------
+
+  const resetOtp = () => {
+    // setOtp(new Array(6).fill(""));
+    setOtpInputs(new Array(6).fill(""));
+  };
+
+  useEffect(() => {
+        if (otpStatus === "Incorrect OTP! Try Again..") {
+          resetOtp();
+
+        }
+      }, [otpStatus]);
+  
   useEffect(() => {
     // Initialize refs array with refs to each OTP input field
     otpInputRefs.current = otpInputs.map((_, i) => otpInputRefs.current[i] || React.createRef());
@@ -64,6 +106,7 @@ const handleToggle = (index) => {
 
     // Validate form fields
     if (validateForm()) {
+      handleFormSubmit(e);//This will save the data to the backend
       setShowOTPModal(true);
     }
   };
@@ -120,9 +163,8 @@ const handleCloseOTPModal = () => {
   setOtpInputs(['', '', '', '', '', '']);
 };
   const handleVerifyOTP = () => {
-    setOtpVerified(true);
-    setActiveContainer('formUpdated');
-    setShowOTPModal(false);
+    verify_otp_credithaat_from_backend();
+
   };
   const handleOtpInputChange = (index, value) => {
     // Update the OTP inputs state with the current input value
@@ -156,6 +198,7 @@ const handleCloseOTPModal = () => {
   };
   
   const handleNext = () => {
+    console.log("Inside handle next")
     setActiveContainer('formUpdatedSecond');
     setActiveSecondForm(true);
   };
@@ -253,8 +296,194 @@ const interval = setInterval(() => {
 return () => clearInterval(interval);
 }, []);
 
+
+const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  try {
+
+      const queryParams = new URLSearchParams(location.search);
+
+      // Retrieve values for the specified parameters
+      const channel = queryParams.get('channel') || '';
+      const dsa = queryParams.get('dsa') || '';
+      const source = queryParams.get('source') || '';
+      const subSource = queryParams.get('sub_source') || '';
+      const subDsa = queryParams.get('sub_dsa') || '';
+
+      const urllink = location.search?.split('?')[1] || 'null';
+
+      const formData1 = new FormData();
+      formData1.append('userPhoneNumber', formData.mobileNumber);
+      formData1.append('firstName', formData.firstName);
+      formData1.append('lastName', formData.lastName);
+      formData1.append('profession', formData.profession);
+      formData1.append('dsa', dsa);
+      formData1.append('channel', channel);
+      formData1.append('source', source);
+      formData1.append('sub_source', subSource);
+      formData1.append('campaign', urllink);
+      formData1.append('sub_dsa', subDsa);
+
+
+      // const response = await axios.post(`${process.env.REACT_APP_BASE_URL}chfronetendotpgenerator`, formData1, {
+      //     headers: {
+      //         'Content-Type': 'application/json',
+      //     },
+      // });
+
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}chfronetendotpgenerator_new`, formData1);
+
+      if (response.data.code === 0) {
+
+          setStgOneHitId(response.data.obj.stgOneHitId);
+          setstgTwoHitId(response.data.obj.stgTwoHitId);
+          sett_experian_log_id(response.data.obj.t_experian_log_id);
+
+      }
+
+      if (response.status === 200) {
+      } else {
+          console.error('Submission failed:', response.statusText);
+      }
+  } catch (error) {
+      console.error('Error submitting form:', error);
+  }
+};
+
+const verify_otp_credithaat_from_backend = async (e) => {
+  // e.preventDefault();
+  setOtpLoader(true);
+  try {
+      const formData1 = new FormData();
+      formData1.append('mobileNumber', formData.mobileNumber);
+      formData1.append('otp', otpInputs.join(""));
+      formData1.append('stgOneHitId', stgOneHitId);
+      formData1.append('stgTwoHitId', stgTwoHitId);
+      formData1.append('t_experian_log_id', t_experian_log_id);
+
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}verifyOTPNewPersonalloan`, formData1);
+
+      console.log("Otp response code is : ",response.data.code)
+
+      if (response.data.code === 0) {
+        setDobFlag(false);
+        setOtpVerified(true);
+        setActiveContainer('formUpdated');
+        setShowOTPModal(false);
+        setResidentialPincodeFlag(false);
+        setOtpLoader(false);
+      }
+      else if (response.data.code === 1) {
+        setDobFlag(true);
+        setOtpVerified(true);
+        setActiveContainer('formUpdated');
+        setShowOTPModal(false);
+        setResidentialPincodeFlag(false);
+        setOtpLoader(false);
+      }
+
+      else if (response.data.code === 2) {
+        setDobFlag(false);
+        setOtpVerified(true);
+        setActiveContainer('formUpdated');
+        setShowOTPModal(false);
+        setResidentialPincodeFlag(true);
+        setOtpLoader(false);
+      }
+      else if (response.data.code === 3) {
+        setDobFlag(true);
+        setOtpVerified(true);
+        setActiveContainer('formUpdated');
+        setShowOTPModal(false);
+        setResidentialPincodeFlag(true);
+        setOtpLoader(false);
+      }
+      else {
+          setOtpLoader(false);
+          setOtpStatus("Incorrect OTP! Try Again..");
+          console.log("Otp incorrect");
+      }
+
+
+      if (response.status === 200) {
+      } else {
+          console.error('Submission failed:', response.statusText);
+      }
+  } catch (error) {
+      console.error('Error submitting form:', error);
+  }
+};
+
+const handleAddInfoFormSubmit = async (e) => {
+  // e.preventDefault();
+  e.preventDefault();
+  try {
+
+      const formData1 = new FormData();
+      formData1.append('mobileNumber', formData.mobileNumber);
+      formData1.append('pan',pan);
+      formData1.append('dob',dob);
+      formData1.append('income',income);
+      formData1.append('salaryType',salaryType);
+
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}secondpageNewpersonalloan`, formData1);
+
+      if (response.data.code === 0) {
+
+      }
+
+      if (response.status === 200) {
+      } else {
+          console.error('Submission failed:', response.statusText);
+      }
+  } catch (error) {
+      console.error('Error submitting form:', error);
+  }
+};
+
+const getLendersList = async (e) => {
+
+  e.preventDefault();
+  try {
+
+      const formData1 = new FormData();
+      formData1.append('mobilenumber', formData.mobileNumber);
+
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}lenderslist`, formData1, {
+          headers: {
+              'Content-Type': 'application/json',
+              'token': 'Y3JlZGl0aGFhdHRlc3RzZXJ2ZXI=' // Add your token here
+          }
+      });
+
+      setTimeout(() => {
+          setIsLoading(false);
+      }, 3000);
+
+      if (response.data.code === 200) {
+          json = response.data.data;
+          setLenderDetails(json);
+
+          // // setShowAddInfo(false);
+          // setShowLendersList(true);
+          setActiveContainer("LendersList");
+      }
+
+      if (response.status === 200) {
+
+      } else {
+          console.error('Submission failed:', response.statusText);
+      }
+  } catch (error) {
+      console.error('Error submitting form:', error);
+  }
+};
+
   return (
     <>
+      {
+        isLoading && <Loader/>
+      }
       <div className='Nav-Bar'>
         <NewNavBar/>
       </div>
@@ -340,6 +569,8 @@ return () => clearInterval(interval);
           
         )}
 
+        {otpLoader && <OtpVerifyLoader/>}
+
    {/* OTP Verification Modal */}
    {showOTPModal && (
           <div className="modal-background">
@@ -364,6 +595,9 @@ return () => clearInterval(interval);
                     />
                   ))}
                 </div>
+
+                <p style={{color:'red', textAlign:'center'}}>{otpStatus}</p>
+
                 <div>
                   <button onClick={handleVerifyOTP} className="ploan-btn-btn-primary">Verify OTP</button>
                 </div>
@@ -373,13 +607,17 @@ return () => clearInterval(interval);
         )}
 
         {activeContainer === 'formUpdated' && otpVerified && !activeSecondForm && (
-          <PLoanSecondPage formData={formData} onNext={handleNext} />
+          <PLoanSecondPage onNext={handleNext} dobFlag={dobFlag} mainFormData={formData} />
         )}
 
         {/* Conditionally render NewFormUpdatedSecond */}
         {activeContainer === 'formUpdatedSecond' && activeSecondForm && (
-          <PLoanThirdPage onNext={() => setActiveContainer('review')} onPrevious={handlePrevious} />
+          <PLoanThirdPage onPrevious={handlePrevious} mainFormData={formData} getLendersList={getLendersList} setIsLoadingforLoader={setIsLoading} ResidentialPincodeFlag={ResidentialPincodeFlag} />
         )}
+
+        {
+          activeContainer === 'LendersList' && <LendersList companies={lenderDetails} formData={formData}/>
+        }
 <Members/>
 <PersonalLoanInfo/>       
 <PersonalLoan/>
