@@ -4,6 +4,7 @@ import ploaniagetwo from './ProductsImages/ploanimagecorousel2.png';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
+import { format } from 'date-fns';
 
 function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
   const [formData, setFormData] = useState({
@@ -147,6 +148,17 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
     }
   };
 
+  const handleDateChange2 = (date) => {
+
+    console.log("Inside handle date change");
+    const formattedDate = date ? format(date, 'yyyy-MM-dd') : null;
+    setFormData({ ...formData, dob: formattedDate });
+    
+    console.log("The changed date is :: ",formattedDate);
+
+    // (date) => setFormData({ ...formData, dob: date })
+  }
+
   return (
     <div className="pploancontainer">
       <div className="pploanrow">
@@ -207,7 +219,7 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
               <div className="pploan-form-group">
                 <DatePicker
                   selected={formData.dob}
-                  onChange={(date) => setFormData({ ...formData, dob: date })}
+                  onChange={handleDateChange2}
                   dateFormat="dd/MM/yyyy"
                   showYearDropdown
                   scrollableYearDropdown

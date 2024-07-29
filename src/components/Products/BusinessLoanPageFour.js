@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import './BusinessLoanPageFour.css';
 import businessloanimageseven from './ProductsImages/businessloanimageseven.png';
+import axios from 'axios';
+import LendersList from './LendersList';
 
-function BusinessLoanPageFour({ onNext, onPrevious }) {
+function BusinessLoanPageFour({ onNext, onPrevious, mainFormData, setIsLoadingforLoader, getLendersList }) {
   const [formData, setFormData] = useState({
     monthlyIncome:'',
     loanAmount: '',
@@ -37,6 +39,8 @@ function BusinessLoanPageFour({ onNext, onPrevious }) {
     const newErrors = validateForm(formData);
     if (Object.keys(newErrors).length === 0) {
       console.log('Form submitted:', formData);
+      console.log("Inside form third page form submit");
+      handleBLThirdPageFormSubmit(e);
       onNext();
     } else {
       setErrors(newErrors);
@@ -76,7 +80,44 @@ function BusinessLoanPageFour({ onNext, onPrevious }) {
     return newErrors;
   };
 
+  const handleBLThirdPageFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+
+        const formData1 = new FormData();
+        formData1.append('mobileNumber', mainFormData.mobileNumber);
+        formData1.append('monthlyIncome', formData.monthlyIncome);
+        formData1.append('loanAmount', formData.loanAmount);
+        formData1.append('empType', formData.employmentType);
+        formData1.append('businessType', formData.businessType);
+        formData1.append('homePin', formData.pincode);
+
+        setIsLoadingforLoader(true);
+
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}thirdpagebusinessloan`, formData1);
+
+        if (response.data.code === 0) {
+
+
+            //Here when the code is 0 we are calling lendersList backend which will give us lendersList accrding to user
+            getLendersList(e);
+
+        }
+
+
+        if (response.status === 200) {
+
+        } else {
+            console.error('Submission failed:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
+};
+
   return (
+    <>
+    {console.log("Business Loan page 3 ")}
     <div className="sbbloancontainer">
       <div className="sbbloanrow">
         <div className="sbbloan-col-md-6">
@@ -172,6 +213,7 @@ function BusinessLoanPageFour({ onNext, onPrevious }) {
           </div>
         </div>
       </div>
+      </>
   );
 }
 

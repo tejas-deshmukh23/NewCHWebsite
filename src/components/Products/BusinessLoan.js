@@ -15,68 +15,90 @@ import BusinessLoanInfo from './BusinessLoanInfo';
 import CityForBl from '../NewHomePage/CityForBl';
 import BLoanEMI from './BLoanEMI';
 import Members from './Members';
+import axios from 'axios';
+import { useLocation, useNavigate } from 'react-router-dom';
+import Loader from './Toader';
+import OtpVerifyLoader from './OtpVerifyLoader';
+import LendersList from './LendersList';
 
 function BusinessLoan() {
+
+  // -------------------This variables are used to send data to bckend -----------------------------------------------------
+  const [stgOneHitId, setStgOneHitId] = useState(null);
+  const [stgTwoHitId, setstgTwoHitId] = useState(null);
+  const [t_experian_log_id, sett_experian_log_id] = useState(null);
+
+  const location = useLocation();
+  const [upotp, setUpotp] = useState('');
+  const [dobFlag, setDobFlag] = useState(true);
+  const [ResidentialPincodeFlag, setResidentialPincodeFlag] = useState(true);
+  const [otpStatus, setOtpStatus] = useState('');
+  const [otpLoader, setOtpLoader] = useState(false);
+  const [isLoading, setIsLoading] = useState(null);
+  var json = null;
+  const [lenderDetails, setLenderDetails] = useState([]);
+  // -----------------------------------------------------------------------------------------------------------------------
+
   //--------------------------faq----------------------------------------
   const faqData = [
     { question: 'What is a credit score?', answer: 'A credit score is a numerical representation of your creditworthiness, typically ranging from 300 to 850. It is calculated based on your credit history, including your borrowing, repayment behaviors, and other financial activities. Lenders use credit scores to evaluate the risk of lending money to you. A higher credit score indicates a lower risk, which can result in better loan terms and interest rates.' },
     { question: 'Why checking your credit report is important ?', answer: 'You can contact customer support...' },
     { question: 'How is a credit score calculated?', answer: 'Yes, we offer discounts...' },
     { question: 'How can I improve my credit score?', answer: 'To change your password...' }
-];
+  ];
 
-const [expandedIndex, setExpandedIndex] = useState(-1);
+  const [expandedIndex, setExpandedIndex] = useState(-1);
 
-const handleToggle = (index) => {
+  const handleToggle = (index) => {
     if (expandedIndex === index) {
-        setExpandedIndex(-1); // Collapse if clicked again
+      setExpandedIndex(-1); // Collapse if clicked again
     } else {
-        setExpandedIndex(index); // Expand clicked FAQ
+      setExpandedIndex(index); // Expand clicked FAQ
     }
-};
+  };
 
-//-----------------------------review----------------------------------------
- // Toggle function for pagination dots
- const handleDotClick = (index) => {
-  setActiveReviewIndex(index);
-};
+  //-----------------------------review----------------------------------------
+  // Toggle function for pagination dots
+  const handleDotClick = (index) => {
+    setActiveReviewIndex(index);
+  };
 
-// Customer reviews data
-const customerReviews = [
-  {
-    id: 1,
-    messageBefore: "100% Commited to customer satisfaction",
-    message:"CreditHaat’s simple application process helped me find the best loan offer. In addition, their helpful loan executives helped me complete the loan application in no time.",
-    name: "Ekta",
-    image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Ekta.jpeg",
-  },
-  {
-    id: 2,
-    messageBefore: "100% Commited to customer satisfaction",
-    message:
-      "Applying for a loan from CreditHaat is so easy and hasslefree. The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
-    name: "Deepak",
-    image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Deepak.jpeg",
-  },
-  {
-    id: 3,
-    messageBefore: "100% Commited to customer satisfaction",
-    message:
-      "I needed funds to deal with an emergency. With CreditHaat I received money in my account within minutes.",
-    name: "Santosh",
-    image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Santosh.jpeg",
+  // Customer reviews data
+  const customerReviews = [
+    {
+      id: 1,
+      messageBefore: "100% Commited to customer satisfaction",
+      message: "CreditHaat’s simple application process helped me find the best loan offer. In addition, their helpful loan executives helped me complete the loan application in no time.",
+      name: "Ekta",
+      image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Ekta.jpeg",
+    },
+    {
+      id: 2,
+      messageBefore: "100% Commited to customer satisfaction",
+      message:
+        "Applying for a loan from CreditHaat is so easy and hasslefree. The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
+      name: "Deepak",
+      image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Deepak.jpeg",
+    },
+    {
+      id: 3,
+      messageBefore: "100% Commited to customer satisfaction",
+      message:
+        "I needed funds to deal with an emergency. With CreditHaat I received money in my account within minutes.",
+      name: "Santosh",
+      image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Santosh.jpeg",
 
-   
-  },
-];
-// Auto-swapping logic for reviews
-useEffect(() => {
-const interval = setInterval(() => {
-  setActiveReviewIndex((prevIndex) => (prevIndex + 1) % customerReviews.length);
-}, 4000); // Change review every 5 seconds
 
-return () => clearInterval(interval);
-}, []);
+    },
+  ];
+  // Auto-swapping logic for reviews
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveReviewIndex((prevIndex) => (prevIndex + 1) % customerReviews.length);
+    }, 4000); // Change review every 5 seconds
+
+    return () => clearInterval(interval);
+  }, []);
 
 
   const [otpVerified, setOtpVerified] = useState(false);
@@ -109,11 +131,14 @@ return () => clearInterval(interval);
   }, [otpInputs]);
 
   const handleSubmit = (e) => {
+    console.log("Inside handle submit");
     e.preventDefault();
 
     // Validate form fields
     if (validateForm()) {
+      console.log("Inside validate form");
       setShowOTPModal(true);
+      handleFormSubmit(e);
     }
   };
 
@@ -166,16 +191,16 @@ return () => clearInterval(interval);
     return valid;
   };
   // Function to handle OTP modal close
-const handleCloseOTPModal = () => {
-  setShowOTPModal(false);
-  // Clear OTP inputs when modal is closed
-  setOtpInputs(['', '', '', '', '', '']);
-};
+  const handleCloseOTPModal = () => {
+    setShowOTPModal(false);
+    // Clear OTP inputs when modal is closed
+    setOtpInputs(['', '', '', '', '', '']);
+  };
 
   const handleVerifyOTP = () => {
-    setOtpVerified(true);
-    setActiveContainer('formUpdated');
-    setShowOTPModal(false);
+    
+
+    verify_otp_credithaat_from_backend();
   };
 
   const handleOtpInputChange = (index, value) => {
@@ -183,10 +208,10 @@ const handleCloseOTPModal = () => {
     const updatedOtpInputs = [...otpInputs];
     updatedOtpInputs[index] = value;
     setOtpInputs(updatedOtpInputs);
-  
+
     // Always move cursor to the end of the current input field after any change
     otpInputRefs.current[index].current.setSelectionRange(value.length, value.length);
-  
+
     // Handle automatic focus based on user input
     if (value === '') {
       // If the current input is deleted, focus on the previous OTP input field if available
@@ -208,7 +233,7 @@ const handleCloseOTPModal = () => {
       }
     }
   };
-  
+
   const handleNext = () => {
     setActiveContainer('formUpdatedSecond');
     setActiveSecondForm(true);
@@ -223,51 +248,224 @@ const handleCloseOTPModal = () => {
     // Remove any digits from the input value
     const value = e.target.value.replace(/\d/g, '');
     setFormData({ ...formData, firstName: value });
-  
+
     // Clear error message when user starts typing valid input
     if (formErrors.firstName) {
       setFormErrors({ ...formErrors, firstName: '' });
     }
   };
-  
+
   const handleLastNameChange = (e) => {
     // Remove any digits from the input value
     const value = e.target.value.replace(/\d/g, '');
     setFormData({ ...formData, lastName: value });
-  
+
     // Clear error message when user starts typing valid input
     if (formErrors.lastName) {
       setFormErrors({ ...formErrors, lastName: '' });
     }
   };
-  
+
   const handleMobileNumberChange = (e) => {
     // Remove any non-digit characters from the input value
     const value = e.target.value.replace(/\D/g, '').slice(0, 10); // Keep only the first 10 digits
     setFormData({ ...formData, mobileNumber: value });
-  
+
     // Clear error message when user starts typing valid input
     if (formErrors.mobileNumber) {
       setFormErrors({ ...formErrors, mobileNumber: '' });
     }
   };
-  
+
   const handleFirstNameBlur = (e) => {
     setFormData({ ...formData, firstName: e.target.value.trim() });
   };
-  
+
   const handleLastNameBlur = (e) => {
     setFormData({ ...formData, lastName: e.target.value.trim() });
   };
-  
+
   const handleMobileNumberBlur = (e) => {
     setFormData({ ...formData, mobileNumber: e.target.value.trim() });
   };
 
+  // ---------------------------------------------------------------------------------------------------------------
+
+  const handleFormSubmit = async (e) => {
+    console.log("Inside handleFormSubmit");
+    e.preventDefault();
+    try {
+
+      const queryParams = new URLSearchParams(location.search);
+
+      // Retrieve values for the specified parameters
+      const channel = queryParams.get('channel') || '';
+      const dsa = queryParams.get('dsa') || '';
+      const source = queryParams.get('source') || '';
+      const subSource = queryParams.get('sub_source') || '';
+      const subDsa = queryParams.get('sub_dsa') || '';
+
+      const urllink = location.search?.split('?')[1] || 'null';
+
+      const formData1 = new FormData();
+      console.log("Formdata.email is : ",formData.email);
+      formData1.append('userPhoneNumber', formData.mobileNumber);
+      console.log("after");
+      formData1.append('firstName', formData.firstName);
+      formData1.append('lastName', formData.lastName);
+      formData1.append('email', formData.email);
+      formData1.append('dsa', dsa);
+      formData1.append('channel', channel);
+      formData1.append('source', source);
+      formData1.append('sub_source', subSource);
+      formData1.append('campaign', urllink);
+      formData1.append('sub_dsa', subDsa);
+
+
+      // const response = await axios.post(`${process.env.REACT_APP_BASE_URL}chfronetendotpgenerator`, formData1, {
+      //     headers: {
+      //         'Content-Type': 'application/json',
+      //     },
+      // });
+
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}chbusinessotpgenerator`, formData1);
+
+      if (response.data.code === 0) {
+
+        setStgOneHitId(response.data.obj.stgOneHitId);
+        setstgTwoHitId(response.data.obj.stgTwoHitId);
+        sett_experian_log_id(response.data.obj.t_experian_log_id);
+
+      }
+
+      if (response.status === 200) {
+      } else {
+        console.error('Submission failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
+  const verify_otp_credithaat_from_backend = async (e) => {
+    // e.preventDefault();
+    setOtpLoader(true);
+    try {
+      const formData1 = new FormData();
+      formData1.append('mobileNumber', formData.mobileNumber);
+      formData1.append('otp', otpInputs.join(""));
+      formData1.append('stgOneHitId', stgOneHitId);
+      formData1.append('stgTwoHitId', stgTwoHitId);
+      formData1.append('t_experian_log_id', t_experian_log_id);
+
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}verifyOTPNewPersonalloan`, formData1);
+
+      console.log("Otp response code is : ", response.data.code)
+
+      if (response.data.code === 0) {
+        // setDobFlag(false);
+        setOtpVerified(true);
+        setActiveContainer('formUpdated');
+        setShowOTPModal(false);
+        // setResidentialPincodeFlag(false);
+        setOtpLoader(false);
+      }
+      else if (response.data.code === 1) {
+        // setDobFlag(true);
+        setOtpVerified(true);
+        setActiveContainer('formUpdated');
+        setShowOTPModal(false);
+        // setResidentialPincodeFlag(false);
+        setOtpLoader(false);
+      }
+
+      else if (response.data.code === 2) {
+        // setDobFlag(false);
+        setOtpVerified(true);
+        setActiveContainer('formUpdated');
+        setShowOTPModal(false);
+        // setResidentialPincodeFlag(true);
+        setOtpLoader(false);
+      }
+      else if (response.data.code === 3) {
+        // setDobFlag(true);
+        setOtpVerified(true);
+        setActiveContainer('formUpdated');
+        setShowOTPModal(false);
+        // setResidentialPincodeFlag(true);
+        setOtpLoader(false);
+      }
+      else {
+        setOtpLoader(false);
+        setOtpStatus("Incorrect OTP! Try Again..");
+        console.log("Otp incorrect");
+        setOtpInputs(Array(6).fill(''));
+      }
+
+
+      if (response.status === 200) {
+      } else {
+        console.error('Submission failed:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
+  const getLendersList = async (e) => {
+
+    e.preventDefault();
+    try {
+  
+        const formData1 = new FormData();
+        formData1.append('mobilenumber', formData.mobileNumber);
+  
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}lenderslist`, formData1, {
+            headers: {
+                'Content-Type': 'application/json',
+                'token': 'Y3JlZGl0aGFhdHRlc3RzZXJ2ZXI=' // Add your token here
+            }
+        });
+  
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 3000);
+  
+        if (response.data.code === 200) {
+            json = response.data.data;
+            setLenderDetails(json);
+  
+            // // setShowAddInfo(false);
+            // setShowLendersList(true);
+            setActiveContainer("LendersList");
+        }
+  
+        if (response.status === 200) {
+  
+        } else {
+            console.error('Submission failed:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
+  };
+
+  const handleOnNextLendersList=()=>{
+    setActiveContainer("LendersListContainer");
+  }
+
+  // -----------------------------------------------------------------------------------------------------------------
+
   return (
     <>
+      {
+        isLoading && <Loader/>
+      }
+      {
+        otpLoader && <OtpVerifyLoader/>
+      }
       <div className='Nav-Bar'>
-        <NewNavBar/>
+        <NewNavBar />
       </div>
       <div className="bloancontainer">
         {activeContainer === 'otpVerification' && !otpVerified && (
@@ -281,75 +479,75 @@ const handleCloseOTPModal = () => {
               </div>
             </div>
             <div className="bloan-col-md-6-bl">
-                <h2>Check eligibility in 3 steps</h2>
-                <form onSubmit={handleSubmit}>
-                  <div className="bloan-form-group">
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleFirstNameChange}
-                      onBlur={handleFirstNameBlur}
-                      placeholder='First name'
-                    />
-                    {formErrors.firstName && <span className="error">{formErrors.firstName}</span>}
-                  </div>
-                  <div className="bloan-form-group">
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleLastNameChange}
-                      onBlur={handleLastNameBlur}
-                      placeholder='Last name'
-                    />
-                    {formErrors.lastName && <span className="error">{formErrors.lastName}</span>}
-                  </div>
-                  <div className="bloan-form-group">
-                    <input
-                      type="text"
-                      id="mobileNumber"
-                      name="mobileNumber"
-                      value={formData.mobileNumber}
-                      onChange={handleMobileNumberChange}
-                      onBlur={handleMobileNumberBlur}
-                      placeholder='Mobile number'
-                      inputMode="numeric"
-                    />
-                    {formErrors.mobileNumber && <span className="error">{formErrors.mobileNumber}</span>}
-                  </div>
-                  <div className="bloan-form-group">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      onBlur={(e) => setFormErrors({ ...formErrors, email: e.target.value ? '' : 'Email is required' })}
-                      placeholder='Email'
-                    />
-                    {formErrors.email && <span className="error">{formErrors.email}</span>}
-                  </div>
-                  <div className="input-group mb-2 ">
-                                    <p className="terms-text" style={{color:"#000000a6", height: '40px', textAlign:'justify',overflowX: 'hidden', overflowY: 'auto' }}>
-                                        By clicking "Send OTP" button and accepting the terms and conditions set out here in, you provide your express consent to Social Worth Technologies Private Limited, Whizdm Innovations Pvt Ltd, Upwards Fintech Services Pvt Ltd, Tata Capital Financial Services Ltd, SmartCoin Financials Pvt Ltd, MWYN Tech Pvt Ltd, L&T Finance Ltd, Krazybee Services Pvt Ltd, Infocredit Services Pvt. Ltd, Incred Financial Services, IIFL Finance Ltd, EQX Analytics Pvt Ltd, EPIMoney Pvt Ltd, Bhanix finance and Investment LTd, Aditya Birla Finance Ltd to access the credit bureaus and credit information report and credit score. You also hereby irrevocably and unconditionally consent to usage of such credit information being provided by credit bureaus
-                                    </p>
-                                    </div>
-                  <button type="submit" className="bloan-btn-btn-primary">Send OTP</button>
-                </form>
-              </div>
+              <h2>Check eligibility in 3 steps</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="bloan-form-group">
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleFirstNameChange}
+                    onBlur={handleFirstNameBlur}
+                    placeholder='First name'
+                  />
+                  {formErrors.firstName && <span className="error">{formErrors.firstName}</span>}
+                </div>
+                <div className="bloan-form-group">
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleLastNameChange}
+                    onBlur={handleLastNameBlur}
+                    placeholder='Last name'
+                  />
+                  {formErrors.lastName && <span className="error">{formErrors.lastName}</span>}
+                </div>
+                <div className="bloan-form-group">
+                  <input
+                    type="text"
+                    id="mobileNumber"
+                    name="mobileNumber"
+                    value={formData.mobileNumber}
+                    onChange={handleMobileNumberChange}
+                    onBlur={handleMobileNumberBlur}
+                    placeholder='Mobile number'
+                    inputMode="numeric"
+                  />
+                  {formErrors.mobileNumber && <span className="error">{formErrors.mobileNumber}</span>}
+                </div>
+                <div className="bloan-form-group">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onBlur={(e) => setFormErrors({ ...formErrors, email: e.target.value ? '' : 'Email is required' })}
+                    placeholder='Email'
+                  />
+                  {formErrors.email && <span className="error">{formErrors.email}</span>}
+                </div>
+                <div className="input-group mb-2 ">
+                  <p className="terms-text" style={{ color: "#000000a6", height: '40px', textAlign: 'justify', overflowX: 'hidden', overflowY: 'auto' }}>
+                    By clicking "Send OTP" button and accepting the terms and conditions set out here in, you provide your express consent to Social Worth Technologies Private Limited, Whizdm Innovations Pvt Ltd, Upwards Fintech Services Pvt Ltd, Tata Capital Financial Services Ltd, SmartCoin Financials Pvt Ltd, MWYN Tech Pvt Ltd, L&T Finance Ltd, Krazybee Services Pvt Ltd, Infocredit Services Pvt. Ltd, Incred Financial Services, IIFL Finance Ltd, EQX Analytics Pvt Ltd, EPIMoney Pvt Ltd, Bhanix finance and Investment LTd, Aditya Birla Finance Ltd to access the credit bureaus and credit information report and credit score. You also hereby irrevocably and unconditionally consent to usage of such credit information being provided by credit bureaus
+                  </p>
+                </div>
+                <button type="submit" className="bloan-btn-btn-primary">Send OTP</button>
+              </form>
             </div>
+          </div>
         )}
 
-         {/* OTP Verification Modal */}
-   {showOTPModal && (
+        {/* OTP Verification Modal */}
+        {showOTPModal && (
           <div className="modal-background">
-            <div className="modal-container" style={{width:"350px"}}>
+            <div className="modal-container" style={{ width: "350px" }}>
               <div className="loan-modal-content">
-                 {/* Close button */}
-                 <button className="otpclose" onClick={handleCloseOTPModal}>X</button>
+                {/* Close button */}
+                <button className="otpclose" onClick={handleCloseOTPModal}>X</button>
                 <h3>Verify OTP</h3>
                 <img src={otpimage} alt='otpimage'></img>
                 <p>An OTP has been sent to your mobile number. Please enter the OTP to proceed.</p>
@@ -363,10 +561,11 @@ const handleCloseOTPModal = () => {
                       value={otp}
                       onChange={(e) => handleOtpInputChange(index, e.target.value)}
                       className="otp-input"
-                      inputMode="numeric" 
+                      inputMode="numeric"
                     />
                   ))}
                 </div>
+                <p style={{color:'red', textAlign:'center'}}>{otpStatus}</p>
                 <div>
                   <button onClick={handleVerifyOTP} className="bloan-btn-btn-primary">Verify OTP</button>
                 </div>
@@ -376,17 +575,22 @@ const handleCloseOTPModal = () => {
         )}
 
         {activeContainer === 'formUpdated' && otpVerified && !activeSecondForm && (
-          <BusinessLoanPageTwo formData={formData} onNext={handleNext} />
+          <BusinessLoanPageTwo mainFormData={formData} onNext={handleNext} />
         )}
 
         {/* Conditionally render NewFormUpdatedSecond */}
         {activeContainer === 'formUpdatedSecond' && activeSecondForm && (
-          <BusinessLoanPageFour onNext={() => setActiveContainer('review')} onPrevious={handlePrevious} />
+          <BusinessLoanPageFour onNext={handleOnNextLendersList} onPrevious={handlePrevious} mainFormData={formData} setIsLoadingforLoader={setIsLoading} getLendersList={getLendersList} />
         )}
-<Members/>
-<BusinessLoanInfo/>
-<BLoanEMI/>
-{/*-------------------------------how it works--------------------------------------------*/ }
+        {/* () => setActiveContainer('review') */}
+        {
+          activeContainer === 'LendersList' && 
+          <LendersList companies={lenderDetails} formData={formData}/>
+        }
+        <Members />
+        <BusinessLoanInfo />
+        <BLoanEMI />
+        {/*-------------------------------how it works--------------------------------------------*/}
         <div className="bloan-how-it-works">
           <h1>How it works</h1>
           <div className="bit-loan-features">
@@ -405,50 +609,50 @@ const handleCloseOTPModal = () => {
           </div>
         </div>
 
-{/*---------------------------FAQ Section---------------------------------------------------- */}
-<div className="faq-container-bloan" style={{padding:"20px"}}>
-              <h1 className="faq-bloan">Frequently asked questions</h1>
-                {faqData.map((faq, index) => (
-                    <div key={index} className="faq-item-bl">
-                        <div className="faq-question-bl" onClick={() => handleToggle(index)}>
-                            <span>{faq.question}</span>
-                            <span className={`arrowbl ${expandedIndex === index ? 'expanded' : ''}`}>▼</span>
-                        </div>
-                        {expandedIndex === index && (
-                            <div className="faq-answer-bl">
-                                <p>{faq.answer}</p>
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
-
- {/*-------------------------------Customer Reviews---------------------------------------*/}
- <section className="customer-reviews">
-        <div className="customer-reviews-grid">
-          {customerReviews.map((review, index) => (
-            <div className={`review-item ${activeReviewIndex === index ? 'active' : ''}`} key={review.id}>
-              <CustomerReview
-                messageBefore={review.messageBefore}
-                message={review.message}
-                name={review.name}
-                image={review.image}
-              />
+        {/*---------------------------FAQ Section---------------------------------------------------- */}
+        <div className="faq-container-bloan" style={{ padding: "20px" }}>
+          <h1 className="faq-bloan">Frequently asked questions</h1>
+          {faqData.map((faq, index) => (
+            <div key={index} className="faq-item-bl">
+              <div className="faq-question-bl" onClick={() => handleToggle(index)}>
+                <span>{faq.question}</span>
+                <span className={`arrowbl ${expandedIndex === index ? 'expanded' : ''}`}>▼</span>
+              </div>
+              {expandedIndex === index && (
+                <div className="faq-answer-bl">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
             </div>
           ))}
         </div>
-      </section>
 
-      {/* Pagination Dots */}
-      <div className="pagination-dots text-center">
-        {customerReviews.map((review, index) => (
-          <span
-            key={review.id}
-            className={`dot ${activeReviewIndex === index ? 'active' : ''}`}
-            onClick={() => setActiveReviewIndex(index)}
-          ></span>
-        ))}
-      </div>
+        {/*-------------------------------Customer Reviews---------------------------------------*/}
+        <section className="customer-reviews">
+          <div className="customer-reviews-grid">
+            {customerReviews.map((review, index) => (
+              <div className={`review-item ${activeReviewIndex === index ? 'active' : ''}`} key={review.id}>
+                <CustomerReview
+                  messageBefore={review.messageBefore}
+                  message={review.message}
+                  name={review.name}
+                  image={review.image}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Pagination Dots */}
+        <div className="pagination-dots text-center">
+          {customerReviews.map((review, index) => (
+            <span
+              key={review.id}
+              className={`dot ${activeReviewIndex === index ? 'active' : ''}`}
+              onClick={() => setActiveReviewIndex(index)}
+            ></span>
+          ))}
+        </div>
 
         <Partnerlist />
         <div>

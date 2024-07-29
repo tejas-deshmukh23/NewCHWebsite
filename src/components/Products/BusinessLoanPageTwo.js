@@ -3,8 +3,10 @@ import './BusinessLoanPageTwo.css';
 import businessloanimagetwo from './ProductsImages/businessloanimagetwo.png';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios';
+import { format } from 'date-fns';
 
-function BusinessLoanPageTwo({ onNext, onPrevious }) {
+function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData }) {
   const currentYear = new Date().getFullYear(); // Get current year
   const minYear = 1900; // Minimum selectable year
 
@@ -63,6 +65,7 @@ function BusinessLoanPageTwo({ onNext, onPrevious }) {
     e.preventDefault();
     if (validateForm()) {
       console.log('Form submitted:', formData);
+      handleBLSecondPageFormSubmit(e);
       onNext();
     }
   };
@@ -97,6 +100,48 @@ function BusinessLoanPageTwo({ onNext, onPrevious }) {
     setErrors(newErrors);
     return valid;
   };
+
+  // -------------------------------------------------------------------------------------------------------------------
+
+  const handleBLSecondPageFormSubmit = async (e) => {
+    // e.preventDefault();
+    e.preventDefault();
+    try {
+  
+        const formData1 = new FormData();
+        formData1.append('mobileNumber', mainFormData.mobileNumber);
+        formData1.append('pan',formData.pan);
+        formData1.append('dob',formData.dob);
+        formData1.append('gender',formData.gender);
+        formData1.append('address',formData.address);
+  
+        const response = await axios.post(`${process.env.REACT_APP_BASE_URL}secondpagebusinessloan`, formData1);
+  
+        if (response.data.code === 0) {
+  
+        }
+  
+        if (response.status === 200) {
+        } else {
+            console.error('Submission failed:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
+  };
+
+  const handleDateChange = (date) => {
+
+    console.log("Inside handle date change");
+    const formattedDate = date ? format(date, 'yyyy-MM-dd') : null;
+    setFormData({ ...formData, dob: formattedDate });
+    
+    console.log("The changed date is :: ",formattedDate);
+
+    // (date) => setFormData({ ...formData, dob: date }) 
+  };
+
+  // -------------------------------------------------------------------------------------------------------------------------
   
 
   return (
@@ -117,7 +162,7 @@ function BusinessLoanPageTwo({ onNext, onPrevious }) {
                 <div className={`bbloan-form-control ${errors.dob ? 'is-invalid' : ''}`}>
                 <DatePicker
                       selected={formData.dob}
-                      onChange={(date) => setFormData({ ...formData, dob: date })}
+                      onChange={handleDateChange}
                       dateFormat="dd/MM/yyyy"
                       showYearDropdown
                       scrollableYearDropdown
