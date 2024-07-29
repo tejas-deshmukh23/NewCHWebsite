@@ -18,9 +18,12 @@ import axios from 'axios';
 import {  useLocation, useNavigate } from 'react-router-dom';
 import Loader from './Toader';
 import OtpVerifyLoader from './OtpVerifyLoader';
+import CreditCardLenders from './CreditCardList';
 
 
 function CreditCard() {
+
+  const navigate=useNavigate();
     
   const faqData = [
     { question: 'What is a credit score?', answer: 'A credit score is a numerical representation of your creditworthiness, typically ranging from 300 to 850. It is calculated based on your credit history, including your borrowing, repayment behaviors, and other financial activities. Lenders use credit scores to evaluate the risk of lending money to you. A higher credit score indicates a lower risk, which can result in better loan terms and interest rates.' },
@@ -81,6 +84,7 @@ const handleToggle = (index) => {
 
   const [otpStatus, setOtpStatus] = useState(null);
   const [otpLoader, setOtpLoader] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -369,10 +373,55 @@ const handleDotClick = (index) => {
    console.error('Error:', error);
  }
 };
+
+const fetchData = async () => {
+  try {
+    // Create a FormData object
+/*const formData = new FormData();
+formData.append('userPhoneNumber', userPhoneNumber);*/
+
+
+// Add data to the FormData
+setIsLoading(true);
+const userPhoneNumber = sessionStorage.getItem('userPhoneNumber');
+
+
+// Convert FormData to JSON object
+const data = {
+mobilenumber: userPhoneNumber 
+};
+
+    
+    console.log("hitting api");
+  
+    const response = await axios.post(`${process.env.REACT_APP_BASE_URL}api/creditcard/submit`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'token': 'Y3JlZGl0aGFhdHRlc3RzZXJ2ZXI=' // Add your token here
+      }
+    });
+  
+    console.log(response.data);
+    if(response.data.code ===200)
+    {
+      sessionStorage.setItem('sucessData',JSON.stringify(response.data));
+      // console.log(response);
+      //  navigate('/list')
+      setIsLoading(false);
+      setActiveContainer("creditCardLenders");
+    }
+    else{
+      
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
   
   return (
     <>
     {/* {otpLoader && <OtpVerifyLoader/>} */}
+    {isLoading && <Loader/>}
 
       <div className='Nav-Bar'>
         <NewNavBar />
@@ -470,8 +519,10 @@ const handleDotClick = (index) => {
         )}
 
         {activeContainer === 'formUpdated' && otpVerified && !activeSecondForm && (
-          <CreditCardPageTwo formData={formData} onNext={handleNext} onPrevious={handlePrevious} />
+          <CreditCardPageTwo formData={formData} onPrevious={handlePrevious} activeContainer={activeContainer} setActiveContainer={setActiveContainer} fetchData={fetchData} />
         )}
+
+        {activeContainer === 'creditCardLenders' && <CreditCardLenders/> }
         <Members/>
         <CcardEMI/>
   <CcardInfo/>

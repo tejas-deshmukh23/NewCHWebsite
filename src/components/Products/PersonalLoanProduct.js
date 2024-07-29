@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import './PersonalLoanProduct.css';
-import newploanimageone from './ProductsImages/newploanimageone.png';
+import newploanimageone from '../NewHomePage/NewHomePageImages/undraw_Dreamer_re_9tua.png';
 import CustomerReview from '../NewHomePage/CustomerReview';
 import otpimage from './ProductsImages/otpimage.png';
 import NewNavBar from '../NewHomePage/NavBar';

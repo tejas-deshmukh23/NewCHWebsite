@@ -106,8 +106,8 @@ const handleToggle = (index) => {
                 </div>
             </div>
 
-            <div className="heading-container">
-    <span className="section heading" style={{color:"#3e2780"}}>Our products</span>
+            <div className="heading-container-h">
+    <span className="section heading-h" style={{color:"#3e2780"}}>Our products</span>
 
     <style>
 

@@ -3,13 +3,15 @@ import './CreditCardPageTwo.css';
 import creditcardimagesix from './ProductsImages/creditcardimagesix.png';
 import axios from 'axios';
 
-function CreditCardPageTwo({ onPrevious }) {
+function CreditCardPageTwo({ onPrevious, fetchData, setActiveContainer }) {
   const [formData, setFormData] = useState({
     pincode: '',
     monthlyincome: '',
     employmenttype: '',
     companyName: '',
   });
+
+  const [verifiedComplete , setVerifiedComplete] = useState(false);
 
   const [errors, setErrors] = useState({
     pincode: '',
@@ -54,9 +56,10 @@ function CreditCardPageTwo({ onPrevious }) {
     }
   };
   
-  const handleSubmit=()=>{
+  const handleSubmit=(e)=>{
     if(validateForm){
-      handleVerification();
+      handleVerification(e);
+      // setActiveContainer("creditCardLenders");
     }
   }
 
@@ -91,7 +94,9 @@ function CreditCardPageTwo({ onPrevious }) {
     return valid;
   };
 
-  const handleVerification = async () => {
+  const handleVerification = async (e) => {
+
+    e.preventDefault();
     
     try {
 
@@ -101,7 +106,7 @@ function CreditCardPageTwo({ onPrevious }) {
      formData1.append('employee', formData.employmenttype);
      formData1.append('income', formData.monthlyincome);
      formData1.append('pincode',formData.pincode);
-     formData1.append('companyName',formData.companyName)
+     formData1.append('companyName',formData.companyName);
      formData1.append('userPhoneNumber',no);
      
      // Send the OTP verification request to the backend
@@ -109,6 +114,10 @@ function CreditCardPageTwo({ onPrevious }) {
       sessionStorage.setItem('userData', JSON.stringify(response1.data.obj));
       // navigate('/dialogb');
       // Handle the response from the backend
+      // fetchData;
+      fetchData();
+      // setVerifiedComplete(true);
+      // setActiveContainer("creditCardLenders");
      
     } catch (error) {
       console.error('Error:', error);
