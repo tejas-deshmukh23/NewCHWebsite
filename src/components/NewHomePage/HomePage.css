@@ -5,10 +5,6 @@
     padding: 0;
     font-family: 'Open Sans', sans-serif;
 }
-.heading-container-h{
-    text-align:center;
-}
-
 
 .customer-reviews-grid {
     display: grid;
@@ -87,7 +83,14 @@
   .pagination-dots {
   padding-top:10px;
   }
+  .heading-container-h{
+        text-align: center; 
+        color: #3e2780;
+ }
+.section-heading{
+    font-size: 4rem;
 
+}
   .dot {
     width: 10px;
     height: 10px;
@@ -115,8 +118,8 @@
 
 .btn1 {
     background-color: #3e2780;
+    border: none;
     border-radius: 10px;
-    border-color: #3e2780;
 }
 
 .container-banner {
@@ -184,6 +187,13 @@
 
 /*--------------------------------------mobile view-------------------------------------------*/
 @media (max-width: 678px) {
+    .heading-container-h{
+        margin-bottom: 20px;
+    }
+    .section-heading{
+        font-size: 2rem;
+    
+    }
     
     .home-page-sect{
         margin:0;

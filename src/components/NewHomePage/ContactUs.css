@@ -20,11 +20,17 @@
 .image-container-contact {
     grid-column: 1 / 2; /* Image container spans first column */
     grid-row: 1; /* Image container in first row */
+    margin-top: -15%;
 }
-
+.error-text {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+  }
 .image-container-contact img {
-    max-width: 100%; /* Ensure image fits container */
-    height: 100%;
+    max-width: 90%; /* Ensure image fits container */
+    height: 90%;
     display: block; /* Prevents unwanted space beneath image */
 }
 
@@ -81,29 +87,17 @@ button:hover {
 }
 
 .support-options-container {
+    margin-top: 50px;
     display: flex;
     justify-content:center;
 }
 
 .support-option {
+    cursor: pointer;
     text-align: center;
     margin: 10px; /* Adjust spacing between options */
     border-radius: 20px;
-    flex-basis: calc(20.33% - 10px); /* Adjust width for each option */
-}
-
-
-
-
-.support-option img {
-    width: 50%;
-    height: 100%;
-}
-
-
-
-.support-option img:hover {
-    background-color: #3e2780;
+    flex-basis: calc(33.33% - 10px); /* Adjust width for each option */
 }
 
 /* Media query for mobile devices */
@@ -119,6 +113,11 @@ button:hover {
         
     
     }
+    .image-container-contact img {
+        max-width: 100%; /* Ensure image fits container */
+        height: 100%;
+        display: block; /* Prevents unwanted space beneath image */
+    }
     .contact-us-container {
         grid-template-columns: 1fr; /* Single column layout for mobile */
     }
@@ -130,11 +129,13 @@ button:hover {
     .form-container-contact form{
         width: 100%;
     }
+
     .form-container-contact p{
         font-size: 18px;
         color: #000000a6;
     }
     .support-option {
+        cursor: pointer;
         text-align: center;
         margin: 10px; /* Adjust spacing between options */
         border-radius: 20px;
@@ -144,14 +145,6 @@ button:hover {
         flex-direction: row; /* Stack options vertically on mobile */
         align-items: center; /* Center items horizontally */
     }
-    .support-option img {
-        width: 50%;
-        height: 100%;
-    }
-    
-
-    .support-option img:hover {
-        background-color: #3e2780;
-    }
+ 
     
 }

@@ -1,0 +1,148 @@
+/* Base styles for desktop view */
+.cc-score-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .cc-score-left {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cc-score-left h1 {
+    font-size: 3rem;
+    color:#3E2780;
+    font-weight: normal;
+    margin-bottom: 10px;
+  }
+  
+  .cc-score-left p {
+    font-size: 1.5em;
+    color: #000000a6;
+    margin-bottom: 20px;
+  }
+  
+  .cc-score-download-button {
+    padding: 20px 50px;
+    width: 40%;
+    background-color: #3E2780;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-right: 25%;
+  }
+  
+  .cc-score-right {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cc-score-logo {
+    width: 15%;
+    height: auto;
+    margin-right: 100px;
+  }
+  
+  .cc-score-chart {
+    width: 60%;
+    height: 300px; /* Adjust height to match the half-doughnut view */
+    margin-top: -5%;
+  }
+  
+  .cc-score-info {
+    margin-top: -10%;
+    text-align: center;
+  }
+  
+  .cc-score-number {
+    font-size: 2.5rem;
+    margin-right: 90px;
+    margin-top: -70px;
+  }
+  
+  .cc-score-text {
+    font-size: 2.5rem;
+    color: #3E2780;
+    margin-right: 100px;
+  }
+  .cc-score-update{
+    font-size: 1.5rem;
+    margin-right: 80px;
+  }
+  
+  /* Styles for mobile view */
+  @media (max-width: 768px) {
+    .cc-score-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+  
+    .cc-score-right {
+      order: 1; /* Move the right section above the left section */
+    }
+    .cc-score-left{
+      order:2;
+    }
+  .cc-score-left h1 {
+    font-size: 1.5rem;
+    color:#3E2780;
+    font-weight: normal;
+    margin-bottom: 10px;
+  }
+  
+  .cc-score-left p {
+    font-size: 18px;
+    color: #000000a6;
+    margin-bottom: 20px;
+  }
+    .cc-score-logo {
+      width: 25%;
+      height: auto;
+      margin-right: 0px;
+    }
+    .cc-score-chart {
+      width: 80%;
+      height: 300px; /* Adjust height to match the half-doughnut view */
+      margin-top: -10%;
+    }
+    
+    .cc-score-number {
+      font-size: 1.5rem;
+      margin-right: 0px;
+      margin-top: -150px;
+    }
+    
+    .cc-score-text {
+      font-size: 1.5rem;
+      color: #3E2780;
+      margin-right: 0px;
+    }
+    .cc-score-update{
+      font-size: 18px;
+      margin-right: 0px;
+    }
+    .cc-score-download-button {
+      padding: 10px 50px;
+      width: 80%;
+      background-color: #3E2780;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-left: 8%;
+    }
+    .desktop-only {
+      display: none;
+    }
+  }
+  

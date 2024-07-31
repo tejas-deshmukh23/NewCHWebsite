@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CcardInfo.css';
-import ploaniagetwo from './ProductsImages/ploaniagetwo.png';
+import ploaniagetwo from './ProductsImages/benefit.png';
 import ploanimagethree from './ProductsImages/ploanimagethree.png';
 import ploanimagefour from './ProductsImages/ploanimagefour.png';
 function CcardInfo(){
@@ -14,7 +14,7 @@ function CcardInfo(){
             <div className="ploan-feature">
               <img src={ploaniagetwo} alt="Feature 1" />
               <h4>Better rewards</h4>
-              <p>Affordable EMIs with low interest personal loan from leading financial institutes</p>
+              <p>Unlock exceptional rewards with our credit card, offering points on every purchase.</p>
             </div>
             <div className="ploan-feature">
               <img src={ploanimagethree} alt="Feature 2" />

@@ -20,8 +20,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Loader from './Toader';
 import OtpVerifyLoader from './OtpVerifyLoader';
 import LendersList from './LendersList';
+import {Link} from 'react-router-dom';
+import HowItWorks from '../NewHomePage/HowItWorks';
 
 function BusinessLoan() {
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[]);
 
   // -------------------This variables are used to send data to bckend -----------------------------------------------------
   const [stgOneHitId, setStgOneHitId] = useState(null);
@@ -41,10 +47,50 @@ function BusinessLoan() {
 
   //--------------------------faq----------------------------------------
   const faqData = [
-    { question: 'What is a credit score?', answer: 'A credit score is a numerical representation of your creditworthiness, typically ranging from 300 to 850. It is calculated based on your credit history, including your borrowing, repayment behaviors, and other financial activities. Lenders use credit scores to evaluate the risk of lending money to you. A higher credit score indicates a lower risk, which can result in better loan terms and interest rates.' },
-    { question: 'Why checking your credit report is important ?', answer: 'You can contact customer support...' },
-    { question: 'How is a credit score calculated?', answer: 'Yes, we offer discounts...' },
-    { question: 'How can I improve my credit score?', answer: 'To change your password...' }
+    { question: 'What is the qualification criteria for business loans?',  answer: (
+      <>
+        <p>
+          1. You can check out the lenders where your eligibility is matched from the <Link to="/businessloan">business loan eligibility form</Link>. 
+          You can also check your credit score from the <Link to="/creditscore">check credit score page</Link>.
+        </p>
+      </>
+    )
+  },
+  { question: 'How can I find out if I am qualified for a business loan?', answer: (
+      <>
+          <p>1. Documents required for a business loan may differ depending on your profession. For salaried individuals the following documents are required - </p>
+          <ul>
+              <li>Proof of identity:</li>
+              <ul>
+              <li> Driver’s license, Passport, PAN Card, Aadhaar Card</li>
+              </ul>
+                
+          </ul>
+          <ul>
+              <li>Proof of income</li>
+              <ul>
+              <li>Up to six month salary bank statement, salary slips and form 16</li>
+              </ul>
+                
+          </ul>
+          <ul>
+              <li>Proof of residence</li>
+              <ul>
+              <li>Driver’s license, Passport, PAN Card, Aadhaar Card,maintenance bill, utility bill, property documents, rent agreement</li>
+              </ul>      
+          </ul>
+          <ul>
+              <li>Proof of business existence</li>
+              <ul>
+              <li>Tax registration, Shop Act license, Company registration certificate</li>
+              </ul>
+          </ul>
+      </>
+  )
+},
+  { question: 'Can I apply for a loan if I already have an existing one?', answer: '1. You can as long as you have a balanced debt-to-income ratio.' },
+  { question: 'Will the loan amount be disbursed in stages or all at once?', answer: '1. The loan will be disbursed all at once when the loan is approved.' },
+  {question:'What affects the credit score of an individual in most cases?', answer:'1. Failing to pay your loan dues and your credit bills in time results in your credit score dipping below optimum. A good credit score is anything above 750; however CreditHaat works with multiple lending partners that can provide loan on a lower credit score as well.'}
   ];
 
   const [expandedIndex, setExpandedIndex] = useState(-1);
@@ -591,23 +637,13 @@ function BusinessLoan() {
         <BusinessLoanInfo />
         <BLoanEMI />
         {/*-------------------------------how it works--------------------------------------------*/}
-        <div className="bloan-how-it-works">
+        
+{/*-------------------------------how it works--------------------------------------------*/ }
+<div className="bloan-how-it-works">
           <h1>How it works</h1>
-          <div className="bit-loan-features">
-            <div className="bit-loan-feature">
-              <img src={businessloanimagefour} alt="Feature 1" />
-              <p>Provide basic details</p>
-            </div>
-            <div className="bit-loan-feature">
-              <img src={businessloanimagefive} alt="Feature 2" />
-              <p>Complete application online</p>
-            </div>
-            <div className="bit-loan-feature">
-              <img src={businessloanimagesix} alt="Feature 3" />
-              <p>Get money in your wallet</p>
-            </div>
-          </div>
         </div>
+        <HowItWorks/>
+{/* -------------------------------------------------------------------- */}
 
         {/*---------------------------FAQ Section---------------------------------------------------- */}
         <div className="faq-container-bloan" style={{ padding: "20px" }}>

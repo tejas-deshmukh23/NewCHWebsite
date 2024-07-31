@@ -10,21 +10,56 @@ import kolkataimage from "./NewHomePageImages/kolkataimage.jpg";
 import noidaimage from "./NewHomePageImages/noidaimage.png";
 import chennaiimage from "./NewHomePageImages/chennaiimage.jpg";
 
-const MoreInformation = () => {
+const MoreInformation = ({cityDetails}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileView, setIsMobileView] = useState(false);
   const intervalRef = useRef(null);
+  const [images, setImages] = useState([]);
 
-  const images = [
-    { id: 1, src: delhiimage, name: "Personal loan in Delhi" },
-    { id: 2, src: bangloreimage, name: "Personal loan in Bangalore" },
-    { id: 3, src: mumbaiimage, name: "Personal loan in Mumbai" },
-    { id: 4, src: puneimage, name: "Personal loan in Pune" },
-    { id: 5, src: hyderabadimage, name: "Personal loan in Hyderabad" },
-    { id: 6, src: kolkataimage, name: "Personal loan in Kolkata" },
-    { id: 7, src: noidaimage, name: "Personal loan in Noida" },
-    { id: 8, src: chennaiimage, name: "Personal loan in Chennai" },
-  ];
+  // const images = [
+  //   { id: 1, src: delhiimage, name: "Personal loan in Delhi" },
+  //   { id: 2, src: bangloreimage, name: "Personal loan in Bangalore" },
+  //   { id: 3, src: mumbaiimage, name: "Personal loan in Mumbai" },
+  //   { id: 4, src: puneimage, name: "Personal loan in Pune" },
+  //   { id: 5, src: hyderabadimage, name: "Personal loan in Hyderabad" },
+  //   { id: 6, src: kolkataimage, name: "Personal loan in Kolkata" },
+  //   { id: 7, src: noidaimage, name: "Personal loan in Noida" },
+  //   { id: 8, src: chennaiimage, name: "Personal loan in Chennai" },
+  // ];
+
+  // Effect to update images when cityDetails changes
+  // useEffect(() => {
+  //   if (cityDetails?.data?.top_city_list) {
+  //     setImages(cityDetails.data.top_city_list.map(city => ({
+  //       id: city.city_name, // Unique id for each city
+  //       src: city.image_url, // Image URL from cityDetails
+  //       name: `Personal loan in ${city.city_name}`, // City name for display
+  //     })));
+  //   }
+  // }, []);
+
+  useEffect(()=>{
+    console.log("City Details inside the moreInformation is :: ",cityDetails.top_city_list);
+    setImages(cityDetails.top_city_list.map(city=>({
+      id: city.city_name,
+      src: city.image_url,
+      name: `Personal loan in ${city.city_name}`,
+      link: `/PersonalLoanCity/${city.city_name.toLowerCase()}` // Example link
+    })))
+  },[])
+
+  // const [images, setImages] = useState([]);
+
+  // useEffect(()=>{
+  //   console.log("Inside the moreInformation : ",cityDetails.top_city_list);
+  //   setImages(cityDetails.top_city_list);
+  // },[])
+
+  // const [images, setImages] = useState([null]);
+
+  // setImages(cityDetails.top_city_list);
+
+  // setImages(cityDetails.city_)
 
   // Function to detect if the viewport is in mobile mode
   const checkMobileView = () => {
@@ -109,6 +144,8 @@ const MoreInformation = () => {
   // CSS class for dynamic sliding animation
   const slideContainerClass = isMobileView ? "slide-container-mobile" : "slide-container";
 
+  
+
   return (
     <div className="moreinfocomp">
       <h1>More information</h1>
@@ -121,23 +158,35 @@ const MoreInformation = () => {
         )}
 
         {/* Images and arrows based on current view mode */}
+
+        {
+    (images != null)?(
+      <>
         <div className={slideContainerClass}>
           {images.slice(currentSlide, currentSlide + (isMobileView ? 1 : 4)).map((image) => (
             <div className="image-container-moreinfo" key={image.id}>
               <div className="image-wrapper">
+              <a href={image.link}> {/* Wrap image with Link */}
                 <img
                   src={image.src}
-                  alt={`Image ${image.id}`}
+                  // alt={`Image ${image.id}`}
                   className="slide-image"
                   style={isMobileView ? getMobileImageStyle() : getImageStyle()} // Apply dynamic style based on view mode
                 />
                 <div className="image-name-container">
                   <p className="image-name">{image.name}</p>
                 </div>
+                </a>
               </div>
             </div>
           ))}
         </div>
+      </>
+            
+    ):(<div>Loading...</div>)
+  }
+        
+        
 
         {/* Arrow right, displayed only in desktop view */}
         {!isMobileView && (

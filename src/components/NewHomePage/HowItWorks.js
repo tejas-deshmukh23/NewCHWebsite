@@ -8,13 +8,13 @@ const HowItWorks = () => {
       <div className="hiw-text-section">
         <div className="hiw-text-item">
           <h3 style={{ color: "#3e2780",fontFamily:"'Open Sans',  sans-serif" ,fontWeight:"normal" }}>
-            <span className="hiw-number">1</span> Complete CreditHaat eligibility form
+            <span className="hiw-number">1</span> Complete CreditHaat eligibility <br></br><h3 className='hhh'>form</h3>
           </h3>
           <p>Complete the simple form to discover eligible lenders</p>
         </div>
         <div className="hiw-text-item">
           <h3 style={{ color: "#3e2780",fontFamily:"'Open Sans',  sans-serif",fontWeight:"normal" }}>
-            <span className="hiw-number">2</span> Choose lender and complete process
+            <span className="hiw-number">2</span> Choose lender and complete<br></br><h3 className='hhh'>process</h3>
           </h3>
           <p>Verify KYC and income proof</p>
         </div>

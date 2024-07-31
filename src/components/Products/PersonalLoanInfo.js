@@ -13,7 +13,7 @@ function PersonalLoanInfo(){
           <div className="ploan-features">
             <div className="ploan-feature">
               <img src={ploaniagetwo} alt="Feature 1" />
-              <h4>Better rewards</h4>
+              <h4>Lower rates</h4>
               <p>Affordable EMIs with low interest personal loan from leading financial institutes</p>
             </div>
             <div className="ploan-feature">

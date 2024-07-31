@@ -6,6 +6,7 @@ import NewNavBar from '../NewHomePage/NavBar';
 import NewHomeFooter from '../NewHomePage/NewHomePageFooter';
 import NewCityFooter from './newCityFooter';
 
+
 const EMICalculator = () => {
   const [loanAmount, setLoanAmount] = useState(50000);
   const [interestRate, setInterestRate] = useState(8);
@@ -33,6 +34,21 @@ const EMICalculator = () => {
     setLoanTerm(term);
   };
 
+  const handleLoanAmountInputChange = (e) => {
+    const amount = parseInt(e.target.value, 10);
+    setLoanAmount(amount);
+  };
+
+  const handleInterestRateInputChange = (e) => {
+    const rate = parseFloat(e.target.value);
+    setInterestRate(rate);
+  };
+
+  const handleLoanTermInputChange = (e) => {
+    const term = parseInt(e.target.value, 10);
+    setLoanTerm(term);
+  };
+
   const calculateEMI = () => {
     const monthlyInterestRatio = (interestRate / 100) / 12;
     const loanTermMonths = loanTerm;
@@ -48,8 +64,14 @@ const EMICalculator = () => {
     return '0.00';
   };
 
-  const calculateInterestAmount = () => {
+  const calculateTotalAmount = () => {
     const totalPayment = parseFloat(calculateEMI()) * loanTerm;
+
+    return totalPayment.toFixed(2); // Convert to fixed decimal places
+  };
+
+  const calculateInterestAmount = () => {
+    const totalPayment = parseFloat(calculateTotalAmount());
     const principalAmount = loanAmount;
 
     if (!isNaN(totalPayment) && !isNaN(principalAmount)) {
@@ -158,45 +180,47 @@ const EMICalculator = () => {
             </div>
 
             <div className="slider-container">
-              <label htmlFor="loanAmount">Loan amount: ₹{loanAmount}</label>
-              <input
-                type="range"
-                id="loanAmount"
-                min="10000"
-                max="100000"
-                step="1000"
-                value={loanAmount}
-                onChange={handleLoanAmountChange}
-                style={{
-                  background: `linear-gradient(to right, #3e2780 0%, #3e2780 ${(loanAmount - 10000) / (100000 - 10000) * 100}%, #ccc ${(loanAmount - 10000) / (100000 - 10000) * 100}%, #ccc 100%)`
-                }}
-              />
-            </div>
+              <div className="slider-label-container">
+                <label htmlFor="loanAmountSlider">Loan amount: </label>
+                <input
+                  type="range"
+                  id="loanAmountSlider"
+                  min="10000"
+                  max="100000"
+                  step="1000"
+                  value={loanAmount}
+                  onChange={handleLoanAmountChange}
+                  style={{
+                    background: `linear-gradient(to right, #3e2780 0%, #3e2780 ${(loanAmount - 10000) / (100000 - 10000) * 100}%, #ccc ${(loanAmount - 10000) / (100000 - 10000) * 100}%, #ccc 100%)`
+                  }}
+                />
+              </div>
 
-            <div className="slider-container">
-              <label htmlFor="interestRate">Interest rate (% per annum): {interestRate}%</label>
-              <input
-                type="range"
-                id="interestRate"
-                min="1"
-                max="20"
-                step="0.5"
-                value={interestRate}
-                onChange={handleInterestRateChange}
-              />
-            </div>
+              <div className="slider-label-container">
+                <label htmlFor="interestRateSlider">Interest rate (% per annum): </label>
+                <input
+                  type="range"
+                  id="interestRateSlider"
+                  min="1"
+                  max="20"
+                  step="0.5"
+                  value={interestRate}
+                  onChange={handleInterestRateChange}
+                />
+              </div>
 
-            <div className="slider-container">
-              <label htmlFor="loanTerm">Loan term (months): {loanTerm}</label>
-              <input
-                type="range"
-                id="loanTerm"
-                min="6"
-                max="60"
-                step="6"
-                value={loanTerm}
-                onChange={handleLoanTermChange}
-              />
+              <div className="slider-label-container">
+                <label htmlFor="loanTermSlider">Loan term (months): </label>
+                <input
+                  type="range"
+                  id="loanTermSlider"
+                  min="6"
+                  max="60"
+                  step="6"
+                  value={loanTerm}
+                  onChange={handleLoanTermChange}
+                />
+                </div>
             </div>
 
             <button className="emibutton" onClick={handleCalculateClick}>Calculate</button>
@@ -208,9 +232,8 @@ const EMICalculator = () => {
               <canvas ref={chartRef} />
             </div>
             <br/>
-            <p>Total amount:₹{calculateEMI() * loanTerm}</p>
+            <p>Total amount: ₹{calculateTotalAmount()}</p>
             <p>Monthly EMI: ₹{calculateEMI()}</p>
-           
           </div>
         </div>
 

@@ -1,87 +1,92 @@
 /* Container that sets up a grid layout */
 .hiw-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 20px; /* Space between columns */
-    align-items: center; /* Center items vertically */
-    padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px; /* Space between columns */
+  align-items: center; /* Center items vertically */
+  padding: 20px;
+}
+
+/* Text section styles */
+.hiw-text-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Image section styles */
+.hiw-image-section {
+  display: flex;
+  justify-content: center;
+}
+.hiw-number{
+ display: inline-block;
+  text-align: center;
+  color: white;
+  background-color: #3e2780;
+  height: 35px;
+  width: 35px;
+  border-radius: 50px;
+
+}
+.hiw-text-item p{
+  font-size:1.5rem;
+  color: #000000a6;
+  text-align: left;
+  margin-left: 7%;
+  font-family: 'Open Sans',  sans-serif;
+}
+.hhh{
+  margin-left: 7%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hhh{
+    margin-left: 10%;
   }
-  
-  /* Text section styles */
-  .hiw-text-section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  /* Image section styles */
-  .hiw-image-section {
-    display: flex;
-    justify-content: center;
+  .hiw-container{
+      padding: 0px;
   }
   .hiw-number{
-   display: inline-block;
-    text-align: center;
-    color: white;
-    background-color: #3e2780;
-    height: 35px;
-    width: 35px;
-    border-radius: 50px;
+      display: inline-block;
+      text-align: center;
+      color: white;
+      background-color: #3e2780;
+      height: 30px;
+      width: 30px;
+      border-radius: 50px;
+  
+    }
+    .hiw-text-item h3{
+      font-size:22px;
 
+     }
+    .hiw-text-item p{
+      font-size:18px;
+      color: #000000a6;
+      text-align: left;
+      margin-left: 10%;
+     }
+  .hiw-container {
+    grid-template-columns: 1fr; /* Single column layout */
   }
-  .hiw-text-item p{
-    font-size:1.5rem;
-    color: #000000a6;
-    text-align: left;
-    margin-left: 7%;
-    font-family: 'Open Sans',  sans-serif;
-  }
-  
-  /* Responsive styles */
-  @media (max-width: 768px) {
-    .hiw-container{
-        padding: 0px;
-    }
-    .hiw-number{
-        display: inline-block;
-        text-align: center;
-        color: white;
-        background-color: #3e2780;
-        height: 30px;
-        width: 30px;
-        border-radius: 50px;
-    
-      }
-      .hiw-text-item h3{
-        font-size:22px;
-        margin-left: 10px;
 
-       }
-      .hiw-text-item p{
-        font-size:18px;
-        color: #000000a6;
-        text-align: left;
-       }
-    .hiw-container {
-      grid-template-columns: 1fr; /* Single column layout */
-    }
-  
-    .hiw-text-section {
-      order: 1; /* Ensure text comes after image */
-    }
-  
-    .hiw-image-section {
-      order: 2; /* Ensure image comes before text */
-    }
+  .hiw-text-section {
+    order: 1; /* Ensure text comes after image */
   }
-  
-  /* Image styles to ensure responsiveness */
-  .hiw-img-fluid {
-    max-width: 100%;
-    height: auto;
+
+  .hiw-image-section {
+    order: 2; /* Ensure image comes before text */
   }
-  
-  .hiw-banner-img {
-    /* Add any additional styles for the image here */
-  }
-  
+}
+
+/* Image styles to ensure responsiveness */
+.hiw-img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.hiw-banner-img {
+  /* Add any additional styles for the image here */
+}

@@ -132,7 +132,14 @@
     background: linear-gradient(to right, rgb(255 255 255) 30%, rgba(255, 255, 255, 0) 100%);
     z-index: 1;
 }
-
+.samecitycontent{
+  font-size:1.5rem;
+  color:#000000a6,
+}
+.backenddata{
+  font-size:1.5rem;
+}
+  
 
   
   @media (max-width: 768px) {
@@ -206,7 +213,12 @@
         font-size: 15px;
         font-family: 'Open Sans', sans-serif;
     }
-    
+    .samecitycontent{
+      font-size:18px;
+    }
+    .backenddata{
+      font-size:18px;
+    }
       
   }
   

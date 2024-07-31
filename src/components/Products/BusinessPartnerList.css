@@ -1,0 +1,103 @@
+.partner-list-container {
+    overflow: hidden; /* Hide overflowing content */
+    margin: auto; /* Center align the container */
+    position: relative; /* Position context for absolute children */
+}
+
+.partner-heading {
+    margin-top: 15px; /* Margin top for the heading */
+    text-align: center; /* Center align the heading */
+    font-family: 'Open Sans', sans-serif; /* Optional: Specify font family */
+    font-size: 2.5rem;
+    padding-top: 20px;
+    font-weight: normal;
+    color: #3e2780;
+}
+
+.marquee-container {
+    overflow: hidden; /* Hide overflow to contain the marquee */
+    width: 100%; /* Ensure full width */
+    position: relative; /* Position context for absolute children */
+    height: 70px; /* Adjust based on image height */
+}
+
+.marquee {
+    display: flex; /* Display children in a row */
+    width: 200%; /* Ensure full width for scrolling */
+    animation: scrollLeft 20s linear infinite; /* Define the animation */
+}
+
+.marquee-content {
+    display: flex; /* Display children in a row */
+    width: 100%; /* Container width */
+}
+
+.brandboxes {
+    margin: 10px; /* Margin around each brand */
+    text-align: center; /* Center align brand content */
+    padding: 10px;
+}
+
+.brand-img {
+    max-width: 80%; /* Fixed width for brand images */
+    max-height: 50px; /* Optional: Max height for brand images */
+    border-radius: 2px; /* Optional: Add border radius */
+}
+
+/* Keyframes for continuous scrolling */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Scroll to the end of the container */
+    }
+}
+
+.view-all-container {
+    text-align: center; /* Center align the "View All" link */
+    margin-top: 20px; /* Add space between brands and "View All" */
+}
+
+.view-all-link {
+    color: #3e2780; /* Link color */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Font size */
+}
+
+.view-all-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+@media (max-width: 768px) {
+    .brand-img {
+        height: auto; /* Maintain aspect ratio */
+        width: 70px; /* Fixed width for brand images */
+        max-height: 40px; /* Optional: Max height for brand images */
+        border-radius: 2px; /* Optional: Add border radius */
+    }
+
+    .partner-heading {
+        font-size: 28px;
+    }
+
+    .brandboxes {
+        margin: 10px; /* Margin around each brand */
+        text-align: center; /* Center align brand content */
+        padding: 8px;
+    }
+
+    .marquee {
+        width: 400%; /* Ensure full width for scrolling */
+        animation: scrollLeft 20s linear infinite; /* Define the animation */
+    }
+
+    /* Target the last two images */
+    .marquee-content .brandboxes:nth-last-of-type(2) .brand-img,
+    .marquee-content .brandboxes:nth-last-of-type(1) .brand-img {
+        width: 20px; /* Adjust width for the last two images */
+        height: auto; /* Maintain aspect ratio */
+        margin-top: -20px; /* Reset top margin */
+        margin-bottom: 0; /* Reset bottom margin */
+    }
+}

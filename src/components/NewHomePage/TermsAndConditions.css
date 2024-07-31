@@ -1,99 +1,94 @@
-
-.content-of-termsC h2{
-    color: #3e2780;
-    font-weight: normal;
-    font-size: 2.5rem;
-}
-.terms-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    grid-template-rows: auto; /* Single row */
-
-}
-.text-section-tc h1 {
-    font-size: 3rem;
-   
-}
-
-/*-------query for mobile---------*/
-@media (max-width: 768px) {
-    /* CSS rules here */
-    .text-section-tc{
-        padding: 20px;
-    }
-
-.text-section-tc h1{
-    font-size: 28px;
-    text-align: left;
-}
-
-
-.content-of-termsC p{
-    font-size: 18px;
-    color: #000000a6;
-}
-
-
-.content-of-termsC h2{
-      font-size: 22px;
-
-}
-.text-section {
-    width: 100%;
-    max-width: 100%; /* Adjust as needed */
-    margin-bottom: 20px; /* Space between text and image */
-}
-
-
-.image-section img {
-    height: auto;
-}
-
-}
-
-
-
-
-
-
-/*-------query for desktop---------*/
+/* Desktop View */
 @media (min-width: 768px) {
-
-    .terms-container {
-        flex-direction: row;
-        justify-content: space-around;
-        text-align: left;
+    .technical-error-container{
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Two equal columns */
+      gap: 20px; /* Gap between columns */
+      margin: 0 auto; /* Center align horizontally */
+      max-width: 100%; /* Limit maximum width */
+      padding: 20px; /* Add padding around the container */
+      font-family: 'Open Sans', sans-serif;
     }
-.content-of-termsC{
-    padding: 20px;
-}
-    .content-of-termsC p{
-        font-size: 1rem;
-        color: #000000a6;
-
+    .tr-text-section {
+      padding-left: 40px;
     }
-    .text-section-tc h1{
-        font-size: 3rem;
-        margin-left: 5%;
-        margin-top: -15%;
-       
+  .tr-text-section h1{
+      font-size: 3rem;
+      text-align: left;
+      color: #3e2780;
+      font-weight: normal;
+      font-family: 'Open Sans',  sans-serif;
     }
-
-    .text-section {
-        width: 55%; /* Adjust width as needed */
-        margin-bottom: 0;
+    .tr-text-section p {
+      font-size: 1.5rem; /* Adjust font size */
+      text-align: left; /* Center align text */
+      margin-bottom: 20px; /* Add space below */
+      color: #000000a6;
     }
-    .content-of-termsC h2{
-        font-size:2rem;
+    .image-section-t img{
+      margin-top: -40px;
+      max-width: 50%;
+      height: auto;
+      margin-left: 25%;
     }
-
-    .image-section {
-        width: 50%; /* Adjust width as needed */
+    .apply-button-t{
+      width: 50%;
+      height: 50px;
+      background-color: #3e2780;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      
     }
-    .image-section img {
-        height: 380px;
-        margin-left:25%;
-    }
-}
+  
+  }
+  
+  /* Mobile View */
+  @media (max-width: 768px) {
+   
+  .technical-error-container {
+    display: flex; /* Use flexbox for mobile layout */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align items */
+  }
+  
+  .tr-text-section {
+    text-align: center; /* Center align text */
+    padding: 0 20px; /* Adjust padding */
+    order: 2; /* Change order to place text below image */
+  }
+  
+  .image-section-t {
+    order: 1; /* Change order to place image above text */
+    margin-bottom: 20px; /* Add space below image */
+  }
+  
+  .image-section-t img {
+    width: 50%; /* Make the image responsive */
+      height: 40%;
+      margin: 0 auto; /* Center align */
+  }
+  .apply-button-t{
+    width: 50%;
+    margin-right: 50%;
+    height: 40px;
+    background-color: #3e2780;
+    color: #fff;
+    border-radius: 5px;
+  
+    
+  }
+  .tr-text-section p {
+    font-size:18px; /* Adjust font size */
+    text-align: left; /* Center align text */
+    margin-bottom: 20px; /* Add space below */
+  }
+  .tr-text-section h1 {
+    font-size: 28px; /* Adjust font size */
+    text-align: left; /* Center align text */
+    margin-bottom: 10px; /* Add space below */
+    color: #3e2780;
+  }
+  }
+  
+  

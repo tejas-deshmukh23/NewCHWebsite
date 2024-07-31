@@ -23,14 +23,54 @@ import CreditCardLenders from './CreditCardList';
 
 function CreditCard() {
 
+  const faqData = [
+    { question: 'Why is your credit score important?', answer: 'Your credit score is one of the first things that a lender Bank or NBFC will look at while evaluating your loan or credit card application. In case your Credit score or Credit score is low, the lender might reject the application without even considering it further. If the credit score is high, the lender will look into other details to determine if the applicant is creditworthy. Thus, a good credit score increases the chances of your loan application being approved. However, your credit score is not the only factor considered for a person’s ability to secure new credit. Lenders also take into consideration your income, debt to income ratio, employment history, profession, etc. before approving or rejecting the application. A strong credit score would not only help you access credit, but it may also help reduce your interest outgo for a loan. Many Banks and NBFCs provide preferential low interest rates to applicants with a good credit score.' },
+    { 
+      question: 'How is your credit score calculated?', 
+      answer: `Your credit score depends on a lot of factors that a credit bureau takes into consideration while calculating your Credit score. These factors depict your credit behaviour in the past and are reported to Banks and NBFCs every time you apply for a credit product. Some of the key factors that influence your credit score are:
+      
+      <br />
+      <b>Loan Repayment History:</b> Timely payments can boost up your credit score and help in improving it significantly. Defaulting on your EMIs or making late payments negatively affects your Credit score. Your loan repayment history has a high impact on your Credit score calculation.
+      
+      <br />
+      <b>Duration of Credit History:</b> The duration or age of your credit history also affects your credit score. If you have used credit cards/loans for a long period of time and made timely payments on them, then it's a sign of disciplined credit behaviour. It has a medium impact on your credit score.
+      
+      <br />
+      <b>Number of Hard Inquiries:</b> Every time you apply for a new credit product, the lender makes an inquiry about your credit score. Such inquiries by lenders and financial institutions are known as hard inquiries. Too many hard inquiries may negatively affect your credit score as it shows you to be credit hungry. Multiple hard enquiries at the same time may have a considerable short-term impact on your credit score.
+      
+      <br />
+      <b>Credit Utilization Ratio:</b> The ratio of the credit amount you spend to the credit amount available to you is known as the credit utilization ratio. You should try to refrain from utilising more than 30% of your available credit on a regular basis to have a good credit utilization ratio. Even though having CUR in the range of 60-70% barely has an impact on credit score but having a high credit utilization ratio or maxing out your credit limit frequently indicates a higher dependency on credit and a potentially high repayment burden, which may negatively impact your credit score.
+      
+      <br />
+      <b>Credit Mix:</b> If you have taken different kinds of loans like personal loan, auto loan, home loan and have responsibly paid it back, it shows your ability to handle different kinds of credit. Also, if you have taken too many unsecured loans like personal loans, it shows you are credit hungry and are too dependent on credit. This may work against you. However, credit mix has a low impact on your credit score and it’s unlikely that a lender will reject you just because you do not have an optimum mix of credit products.` 
+    },
+    { 
+      question: 'Benefits of maintaining a high credit score?', 
+      answer: `Though credit score is not the only thing that lenders look at when considering a loan or credit card application, it is arguably one of the most important ones. Maintaining a good credit score comes with several benefits that include:
+      
+      <ul>
+        <li>Greater chances of your loan applications being approved, as a high Credit score indicates higher creditworthiness and lower risk for the lender</li>
+        <li>You are more likely to receive lower interest rates on loans</li>
+        <li>You can get easy and quick approval for your loan and credit card applications</li>
+        <li>Access to pre-approved loans based on your eligibility</li>
+        <li>You can avail higher limit on your credit cards</li>
+        <li>Discount on processing fees and other charges</li>
+      </ul>`
+    },
+    {question:'What to do if your credit score is low?',  answer: `A low credit score can make it difficult for you to get your loan or credit card applications approved. You can take the following steps and adhere strictly to it to improve your credit score again:<br/>
+    <br/>
+      <p>Start paying your loan EMIs and credit card bills on time. Do not miss payments under any circumstances.</p><br/>
+      <p>Reduce your excessive dependency on credit and try to reduce your credit utilization ratio, especially if you max out your credit card limit regularly.</p><br/>
+      <p>In case of errors in your credit report, get it rectified at the earliest from the credit bureau. For this, you should check your credit score online regularly through Paisabazaar and if there’s a fall, do check the report for errors.</p><br/>
+      <p>Avoid applying for multiple loans or credit cards very frequently. It is advisable to wait for six months from availing the latest credit instrument before you apply for credit again.</p><br/>
+      <p>Avoid closing your oldest credit card. A longer credit history helps lenders take credit-related decisions with more confidence.</p><br/>
+      <p>Keep a good mix of secured (e.g., home loan, car loan, etc.) and unsecured credit (personal loan, credit card, etc.) in your profile.</p><br/>
+      <p>Seek expert advice from Paisabazaar’s Credit Advisory Services to improve your credit score significantly.</p>`
+    }
+  ];
+
   const navigate=useNavigate();
     
-  const faqData = [
-    { question: 'What is a credit score?', answer: 'A credit score is a numerical representation of your creditworthiness, typically ranging from 300 to 850. It is calculated based on your credit history, including your borrowing, repayment behaviors, and other financial activities. Lenders use credit scores to evaluate the risk of lending money to you. A higher credit score indicates a lower risk, which can result in better loan terms and interest rates.' },
-    { question: 'Why checking your credit report is important ?', answer: 'You can contact customer support...' },
-    { question: 'How is a credit score calculated?', answer: 'Yes, we offer discounts...' },
-    { question: 'How can I improve my credit score?', answer: 'To change your password...' }
-];
 
 const [expandedIndex, setExpandedIndex] = useState(-1);
 
@@ -559,7 +599,7 @@ mobilenumber: userPhoneNumber
                         </div>
                         {expandedIndex === index && (
                             <div className="faq-answer-ccard">
-                                <p>{faq.answer}</p>
+                                 <p dangerouslySetInnerHTML={{ __html: faq.answer }} />
                             </div>
                         )}
                     </div>

@@ -13,16 +13,17 @@ import Partnerlist from '../NewHomePage/PartnerList';
 import NewHomeFooter from '../NewHomePage/NewHomePageFooter';
 import NewCityFooter from './newCityFooter';
 import SupportPartner from './SupportPartner';
+import {Link} from "react-router-dom";
 
 function HomePage() {
     const [activeReviewIndex, setActiveReviewIndex] = useState(0); // State to track active review index
 
    //-------------------------------------------faq-------------------------------
    const faqData = [
-    { question: 'What is a credit score?', answer: 'A credit score is a numerical representation of your creditworthiness, typically ranging from 300 to 850. It is calculated based on your credit history, including your borrowing, repayment behaviors, and other financial activities. Lenders use credit scores to evaluate the risk of lending money to you. A higher credit score indicates a lower risk, which can result in better loan terms and interest rates.' },
-    { question: 'Why checking your credit report is important ?', answer: 'You can contact customer support...' },
-    { question: 'How is a credit score calculated?', answer: 'Yes, we offer discounts...' },
-    { question: 'How can I improve my credit score?', answer: 'To change your password...' }
+    { question: 'Will taking a loan from CreditHaat be costly?', answer: 'CreditHaat has tied up with the best lenders in India. CreditHaat ensures that users find the best loan offer for themselves.' },
+    { question: 'Does CreditHaat charge any fees from users?', answer: 'No CreditHaat does not charge any fees from its users.' },
+    { question: 'Is sharing personal information safe?', answer: 'Yes, CreditHaat uses the best encryption and security mechanisms to protect user information.' },
+    { question: 'Will CreditHaat team help in completing loan application?', answer: 'CreditHaat’s experienced loan executives will provide users all the help to complete the loan application.' }
 ];
 
 const [expandedIndex, setExpandedIndex] = useState(-1);
@@ -93,7 +94,9 @@ const handleToggle = (index) => {
                         <h1>Welcome to CreditHaat</h1>
                         <p className='textabout'>CreditHaat offers you the best loan offers from multiple Banks and NBFCs </p>
                         <div>
+                        <Link to="/personalLoan">
                         <button type="submit" className="btn-p" style={{backgroundColor: "#3e2780", color: "#ffffff", padding: "10px"}}>Get started</button>
+                        </Link>
                         </div>
 
                     </div>
@@ -106,8 +109,9 @@ const handleToggle = (index) => {
                 </div>
             </div>
 
+
             <div className="heading-container-h">
-    <span className="section heading-h" style={{color:"#3e2780"}}>Our products</span>
+    <span className="section-heading" style={{color:"#3e2780"}}>Our products</span>
 
     <style>
 
@@ -168,7 +172,9 @@ padding-top: 70px;
                         <h1>Your ideal personal loan awaits</h1>
                         <p>Find the lowest interest rate offers from our extensive network of banks and NBFCs.</p>
                         <div>
+                          <Link to="/personalLoan">
                            <button type="submit" className="btn1" style={{ backgroundColor: "#3e2780", color: "#ffffff", padding: "10px" }}>Get started</button>
+                           </Link>
                         </div>
                     </div>
             </div>
@@ -193,8 +199,11 @@ padding-top: 70px;
                         <h1>Business loans made easy</h1>
                         <p>Loan with best terms to grow your business.</p>
                         <div>
+                        <Link to="/BusinessLoan">
                            <button type="submit" className="btn1" style={{ backgroundColor: "#3e2780", color: "#ffffff", padding: "10px" }}>Get started</button>
+                        </Link>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -208,7 +217,9 @@ padding-top: 70px;
                         <h1>Choose the best credit card for you</h1>
                         <p>Discover credit cards with exclusive rewards and perks.</p>
                         <div>
+                        <Link to="/CreditCard">
                            <button type="submit" className="btn1" style={{ backgroundColor: "#3e2780", color: "#ffffff", padding: "10px" }}>Get started</button>
+                        </Link>
                         </div>
                     </div>
                 </div>
@@ -232,7 +243,9 @@ padding-top: 70px;
                         <h1>Check your credit score</h1>
                         <p>Free credit scores to plan your finances.</p>
                         <div>
+                        <Link to="/CreditScore">
                            <button type="submit" className="btn1" style={{ backgroundColor: "#3e2780", color: "#ffffff", padding: "10px" }}>Get started</button>
+                        </Link>
                         </div>
                     </div>
                 </div>

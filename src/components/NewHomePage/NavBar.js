@@ -1,10 +1,15 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import { HamburgetMenuClose, HamburgetMenuOpen } from "./NewIcons";
-import credithattlogo from '../NewHomePage/NewHomePageImages/logo1-removebg-preview.png';
+import credithattlogo from '../NewHomePage/NewHomePageImages/logoCH.png';
+import { Link } from "react-router-dom";
+
 
 function NavBar() {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to the top of the page when component mounts
+  }, []);
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
@@ -17,8 +22,9 @@ function NavBar() {
     <>
       <nav className="navbar">
         <div className="nav-container" style={{fontFamily:'Open Sans, sans-serif'}}>
-        <h4>CreditHaat</h4>
-        <img className="nav-logo.icon" src={credithattlogo} alt="logo_pic" height={'40px'} width={'40px'} style={{marginLeft:'0px'}}/>
+       <Link to="/">
+        <img className="nav-logo.icon" src={credithattlogo} alt="logo_pic"/>
+        </Link>
           <NavLink  className="nav-logo">
               
           </NavLink>
