@@ -39,9 +39,9 @@ const NewHomePageFooter = () => {
           <ul class="footer-link" style={{listStyleType:"none",textDecoration:"none",padding:"0"}}>
           <b style={{color:"white", fontSize:"20px"}}>Resource</b>
 
-            <li class="footer-link_item">
+            {/* <li class="footer-link_item">
               <a class="footer-link_item" href="/faq">FAQs</a>
-            </li>
+            </li> */}
             <li class="footer-link_item">
               <a class="footer-link_item" href='/Allpartners' >Lending partners</a> 
                           </li>

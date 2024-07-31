@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './TermsAndConditions.css'; // Import your CSS file
 import terms from "../NewHomePage/NewHomePageImages/termsC.png";
 import NavBar from './NavBar';
@@ -6,6 +6,9 @@ import NewCityFooter from './newCityFooter';
 import NewHomePageFooter from './NewHomePageFooter';
 
 const TermsAndConditions = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0); // Scroll to the top of the page when component mounts
+      }, []);
     return (
         <>
             <div>

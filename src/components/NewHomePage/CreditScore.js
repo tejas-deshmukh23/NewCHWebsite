@@ -302,6 +302,7 @@ const CreditScore = () => {
           setMarkVarToSend(response.data.data.mark);
         }else{
           setActiveContainer("technical_error");
+          setOpen(false);
         }
   
         if (response.status === 200) {

@@ -216,7 +216,7 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
             </div>
 
             {dobFlag &&
-              <div className="pploan-form-group">
+              <div className="pploan-form-group" style={{border:'1px solid gray'}}>
                 <DatePicker
                   selected={formData.dob}
                   onChange={handleDateChange2}
@@ -227,13 +227,12 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
                   maxDate={new Date()}
                   minDate={new Date(minYear, 0, 1)} // Use minYear here
                   placeholderText="Date of birth"
-                  style={{ outline: 'none' }}
                 />
 
                 {errors.dob && <div className="pploan-invalid-feedback">{errors.dob}</div>}
               </div>
             }
-            <button type="submit" className="pploan-btn-btn-primary">Next</button>
+            <button type="submit" className="pploan-btn-btn-primary">Next</button> 
           </form>
 
         </div>

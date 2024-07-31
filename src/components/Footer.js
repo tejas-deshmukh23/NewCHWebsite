@@ -13,9 +13,9 @@ const Footer = () => {
           <b>Product</b>
           <ul class="footer-link">
 
-            <li class="footer-link_item">
+            {/* <li class="footer-link_item">
               <a class="footer-link_item" href="/personal">Personal loan</a>
-            </li>
+            </li> */}
             <li class="footer-link_item">
               <a class="footer-link_item" href="/business">Business loan</a>
             </li>
