@@ -4,6 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import './PersonalLoanProduct.css';
 import newploanimageone from '../NewHomePage/NewHomePageImages/undraw_Dreamer_re_9tua.png';
 import CustomerReview from '../NewHomePage/CustomerReview';
+import Snehal from "../NewHomePage/NewHomePageImages/Snehal.jpeg.jpeg";
+import NETHI from "../NewHomePage/NewHomePageImages/NETHI.jpeg";
 import otpimage from './ProductsImages/otpimage.png';
 import NewNavBar from '../NewHomePage/NavBar';
 import Partnerlist from '../NewHomePage/PartnerList';
@@ -21,6 +23,7 @@ import Loader from './Toader';
 import OtpVerifyLoader from './OtpVerifyLoader';
 import {Link} from "react-router-dom";
 import HowItWorks from '../NewHomePage/HowItWorks';
+import BLListNavbar from './BLListNavbar';
 
 function PersonalLoanProduct() {
 
@@ -335,16 +338,16 @@ const customerReviews = [
     id: 1,
     messageBefore: "100% Commited to customer satisfaction",
     message:"CreditHaat’s simple application process helped me find the best loan offer. In addition, their helpful loan executives helped me complete the loan application in no time.",
-    name: "Ekta",
-    image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Ekta.jpeg",
+    name: "Snehal",
+    image: Snehal,
   },
   {
     id: 2,
     messageBefore: "100% Commited to customer satisfaction",
     message:
-      "Applying for a loan from CreditHaat is so easy and hasslefree. The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
-    name: "Deepak",
-    image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Deepak.jpeg",
+      "Applying for a loan from CreditHaat is so easy and hasslefree.x The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
+    name: "Nethi",
+    image: NETHI,
   },
   {
     id: 3,
@@ -554,9 +557,20 @@ const getLendersList = async (e) => {
       {
         isLoading && <Loader/>
       }
-      <div className='Nav-Bar'>
+
+      {
+        activeContainer !== "LendersList" && 
+        <div className='Nav-Bar'>
         <NewNavBar/>
       </div>
+      }
+      
+
+      {
+        activeContainer === "LendersList" &&
+        <BLListNavbar/>
+      }
+
       <div className="ploancontainer">
         {activeContainer === 'otpVerification' && !otpVerified && (
           <div className="ploanrow">
@@ -686,15 +700,33 @@ const getLendersList = async (e) => {
         )}
 
         {
-          activeContainer === 'LendersList' && <LendersList companies={lenderDetails} formData={formData}/>
+          !isLoading && activeContainer === 'LendersList' && <LendersList companies={lenderDetails} formData={formData}/>
         }
-<Members/>
-<PersonalLoanInfo/>       
-<PersonalLoan/>
-<div className="bloan-how-it-works">
+
+{
+            activeContainer !== "LendersList" && <Members/>
+}
+{
+            activeContainer !== "LendersList" && <PersonalLoanInfo/> 
+}
+{
+            activeContainer !== "LendersList" && <PersonalLoan/> 
+}
+
+{
+            activeContainer !== "LendersList" &&
+            <>
+              <div className="bloan-how-it-works">
           <h1>How it works</h1>
         </div>
 <HowItWorks/>
+            </>
+}
+      
+
+{
+            activeContainer !== "LendersList" &&
+            <>
     
 {/*---------------------------FAQ Section---------------------------------------------------- */}
 <div className="faq-container-ploan" style={{padding:"20px"}}>
@@ -741,11 +773,18 @@ const getLendersList = async (e) => {
         ))}
       </div>
 
-        <Partnerlist />
+      </>
+}
+{
+  activeContainer !== "LendersList" &&  <Partnerlist />
+}
+{
+  activeContainer !== "LendersList" &&  
         <div>
           <NewHomeFooter />
           <NewCityFooter />
         </div>
+}
       </div>
     </>
   );

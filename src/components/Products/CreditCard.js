@@ -19,6 +19,8 @@ import {  useLocation, useNavigate } from 'react-router-dom';
 import Loader from './Toader';
 import OtpVerifyLoader from './OtpVerifyLoader';
 import CreditCardLenders from './CreditCardList';
+import Snehal from "../NewHomePage/NewHomePageImages/Snehal.jpeg.jpeg";
+import NETHI from "../NewHomePage/NewHomePageImages/NETHI.jpeg";
 
 
 function CreditCard() {
@@ -272,16 +274,16 @@ const handleDotClick = (index) => {
       id: 1,
       messageBefore: "100% Commited to customer satisfaction",
       message:"CreditHaat’s simple application process helped me find the best loan offer. In addition, their helpful loan executives helped me complete the loan application in no time.",
-      name: "Ekta",
-      image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Ekta.jpeg",
+      name: "Snehal",
+      image: Snehal,
     },
     {
       id: 2,
       messageBefore: "100% Commited to customer satisfaction",
       message:
-        "Applying for a loan from CreditHaat is so easy and hasslefree. The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
-      name: "Deepak",
-      image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Deepak.jpeg",
+        "Applying for a loan from CreditHaat is so easy and hasslefree.x The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
+      name: "Nethi",
+      image: NETHI,
     },
     {
       id: 3,
@@ -290,7 +292,7 @@ const handleDotClick = (index) => {
         "I needed funds to deal with an emergency. With CreditHaat I received money in my account within minutes.",
       name: "Santosh",
       image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Santosh.jpeg",
-  
+
      
     },
   ];
@@ -564,8 +566,9 @@ mobilenumber: userPhoneNumber
 
         {activeContainer === 'creditCardLenders' && <CreditCardLenders/> }
         <Members/>
+        <CcardInfo/>
         <CcardEMI/>
-  <CcardInfo/>
+ 
 {/*--------------------------------------------3rd sect----------------------------------------*/}
         {/* <div className="credit-card-works">
           <h1>Meet our cool features</h1>

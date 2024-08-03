@@ -78,7 +78,7 @@ function BusinessPartnerList() {
             </div>
         </div>
         <div className="view-all-container">
-            <a href="/Allpartners" className="view-all-link">View All</a>
+            <a href="/NewAllPartners" className="view-all-link">View All</a>
         </div>
     </div>
     

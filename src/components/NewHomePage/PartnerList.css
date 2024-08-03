@@ -82,9 +82,8 @@
   }
 
   .pbrandboxes {
-      margin: 10px; /* Margin around each brand */
+      margin: 2px; /* Margin around each brand */
       text-align: center; /* Center align brand content */
-      padding: 8px;
   }
 
   .pmarquee {

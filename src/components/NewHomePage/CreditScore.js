@@ -480,7 +480,7 @@ const CreditScore = () => {
             </div>
             {expandedIndex === index && (
               <div className="faq-answer1">
-                <p>{faq.answer}</p>
+                <p dangerouslySetInnerHTML={{__html: faq.answer}}/>
               </div>
             )}
           </div>

@@ -260,7 +260,6 @@ return (
                   </div>
               ))}
           </div>
-      <CityPageEligibility/>
           <MoreInformation cityDetails={cityDetails}/>
           <SecondLast/>
           <Partnerlist/>

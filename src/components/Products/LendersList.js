@@ -22,7 +22,7 @@ function PersonalLoanForthPage({ companies, formData }) {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setShowConfetti(false);
-        }, 50000); // Stop confetti after 3 seconds
+        }, 2000); // Stop confetti after 3 seconds
 
         return () => clearTimeout(timeout);
     }, []);
@@ -118,14 +118,14 @@ function PersonalLoanForthPage({ companies, formData }) {
         {!isLoading && errorPopup && <ErrorPopup setErrorPopup={setErrorPopup} lenderName={lenderName}/>}
         {isLoading && <ApplicationLoader/>}
 
-        <div className="congratulations-container">
-            <div className="congratulations-message">
+        <div className="congratulations-container" style={{padding:"0px"}}>
+            {/* <div className="congratulations-message">
                 <h1>🎉 Congrats, Money Maestro! 🎉</h1>
                 <p>Form filled flawlessly! Pick your champion and let's get that cash dash started! 💸🏃‍♂️</p>
-            </div>
-            <div className="company-names">
-                <h2>Loan providers:</h2>
-                <ul>
+            </div> */}
+            {/* <div className="company-names"> */}
+                {/* <h2>Loan providers:</h2> */}
+                <ul style={{listStyle:"none", padding:"0px"}}>
                     {companies.lender_details.map((company, index) => (
                         <li key={index}>
                             <div className="company-names">
@@ -166,7 +166,7 @@ function PersonalLoanForthPage({ companies, formData }) {
                         </li>
                     ))}
                 </ul>
-            </div>
+            {/* </div> */}
             {/* Render celebratory confetti */}
             {showConfetti && (
                 <div className="confetti-container">

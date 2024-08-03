@@ -6,9 +6,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 import { format } from 'date-fns';
 
-function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData }) {
+function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData, dobFlag }) {
   const currentYear = new Date().getFullYear(); // Get current year
-  const minYear = 1900; // Minimum selectable year
+  const minYear = currentYear-59; // Minimum selectable year
 
   const [formData, setFormData] = useState({
     dob: null,
@@ -74,7 +74,7 @@ function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData }) {
     let valid = true;
     const newErrors = {};
   
-    if (!formData.dob) {
+    if (dobFlag && !formData.dob) {
       newErrors.dob = 'Date of birth is required';
       valid = false;
     }
@@ -141,6 +141,10 @@ function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData }) {
     // (date) => setFormData({ ...formData, dob: date }) 
   };
 
+  const today = new Date();
+  const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+  const sixtyYearsAgo = new Date(today.getFullYear() - 60, today.getMonth(), today.getDate());
+
   // -------------------------------------------------------------------------------------------------------------------------
   
 
@@ -158,6 +162,7 @@ function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData }) {
         <div className="bbloan-col-md-6-bl">
             <h2>Check eligibility in 3 steps</h2>
             <form onSubmit={handleSubmit}>
+            {dobFlag &&
               <div className="bbloan-form-group">
                 <div className={`bbloan-form-control ${errors.dob ? 'is-invalid' : ''}`}>
                 <DatePicker
@@ -167,14 +172,15 @@ function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData }) {
                       showYearDropdown
                       scrollableYearDropdown
                       yearDropdownItemNumber={150}
-                      maxDate={new Date()}
-                      minDate={new Date(minYear, 0, 1)}
+                      maxDate={eighteenYearsAgo}
+                      minDate={sixtyYearsAgo}
                       placeholderText="Date of birth"
                       style={{ outline: 'none' }} // Inline style to remove outline
                     />
                 </div>
                 {errors.dob && <div className="bbloan-invalid-feedback">{errors.dob}</div>}
               </div>
+            }
               <div className="bbloan-form-group">
                 <select
                   className={`bbloan-form-control ${errors.gender ? 'is-invalid' : ''}`}

@@ -64,7 +64,7 @@
     font-size:1.5rem;
     color: #000000a6;
     text-align: left;
-    padding-left: 50px;
+    padding-left: 8%;
    }
    .texts p{
     font-size:1.5rem;
@@ -72,6 +72,9 @@
     text-align: left;
     padding-left: 50px;
    }
+   .whh{
+    padding-left:8%;
+}
   .review-item {
     display: none;
   }
@@ -194,7 +197,9 @@
         font-size: 2rem;
     
     }
-    
+    .whh{
+        padding-left:7%;
+    }
     .home-page-sect{
         margin:0;
         padding:0;
@@ -296,5 +301,6 @@
         font-size: 15px;
         font-family: 'Open Sans', sans-serif;
     }
+   
     
 }

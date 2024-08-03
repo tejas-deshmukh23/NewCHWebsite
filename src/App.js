@@ -21,6 +21,7 @@ import MoreInformation from './components/NewHomePage/MoreInformation';
 import PersonalLoanInfo from './components/Products/PersonalLoanInfo';
 import HowItWorks from './components/NewHomePage/HowItWorks';
 import CreditScoreSecondPage from './components/NewHomePage/CreditScoreSecondPage';
+import NewAllPartners from './components/Products/NewAllPartners';
 
 // import AboutPage from './components/AboutPage';
 // import ContactPage from './components/ContactPage';
@@ -50,6 +51,7 @@ function App() {
         <Route path="/moreinfo" element={<MoreInformation />} />
         <Route path="/plinfo" element={<PersonalLoanInfo />} />
         <Route path="/hiw" element={<HowItWorks />} />
+        <Route path="/NewAllPartners" element={<NewAllPartners/>}/>
         
 
         {/* Dynamic Route for PersonalLoan with citypages */}

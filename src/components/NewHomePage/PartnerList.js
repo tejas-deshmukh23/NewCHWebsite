@@ -92,7 +92,7 @@ function PartnerList() {
             </div>
         </div>
         <div className="pview-all-container">
-            <a href="/Allpartners" className="pview-all-link">View All</a>
+            <a href="/NewAllPartners" className="pview-all-link">View All</a>
         </div>
     </div>
     

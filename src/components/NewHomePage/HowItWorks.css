@@ -38,15 +38,17 @@
 }
 .hhh{
   margin-left: 7%;
+  font-weight:normal;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
   .hhh{
     margin-left: 10%;
+    font-weight:normal;
   }
   .hiw-container{
-      padding: 0px;
+      padding: 10px;
   }
   .hiw-number{
       display: inline-block;

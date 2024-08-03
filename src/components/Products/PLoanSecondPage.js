@@ -13,7 +13,7 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
     pan: '',
     dob: null, // Initialize dob as null for react-datepicker
   });
-  const minYear = 1900; // Example: Define minYear here
+  const minYear = new Date().getFullYear()-59; // Example: Define minYear here
 
   const [errors, setErrors] = useState({});
 
@@ -159,6 +159,10 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
     // (date) => setFormData({ ...formData, dob: date })
   }
 
+  const today = new Date();
+  const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+  const sixtyYearsAgo = new Date(today.getFullYear() - 60, today.getMonth(), today.getDate());
+
   return (
     <div className="pploancontainer">
       <div className="pploanrow">
@@ -224,9 +228,9 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
                   showYearDropdown
                   scrollableYearDropdown
                   yearDropdownItemNumber={150}
-                  maxDate={new Date()}
-                  minDate={new Date(minYear, 0, 1)} // Use minYear here
-                  placeholderText="Date of birth"
+                  maxDate={eighteenYearsAgo}
+                  minDate={sixtyYearsAgo} // Use minYear here
+                  placeholderText="Date of birth" 
                 />
 
                 {errors.dob && <div className="pploan-invalid-feedback">{errors.dob}</div>}

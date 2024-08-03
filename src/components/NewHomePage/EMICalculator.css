@@ -137,7 +137,37 @@
 .benefitsf {
   margin-top: 5%;
 }
+.lb{
+  border:1px solid #000000a6;
+  width: 20%;
+  margin-left: 50%;
 
+}
+.input-field-e{
+  width: 100px; /* Adjust width as needed */
+  text-align: center; /* Center text inside the input field */
+  padding: 5px; /* Add padding if needed */
+  border: 1px solid #ccc; /* Border styling */
+  border-radius: 4px; /* Rounded corners */
+  
+  font-size: 16px; /* Font size for better readability */
+}
+
+.changeinput {
+  display: inline-block;
+  width: 200px; /* Match the width of the input field */
+  text-align: center; /* Center text */
+  padding: 5px; /* Add padding if needed */
+  border: 1px solid #ccc; /* Border styling */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Show pointer cursor to indicate it's clickable */
+  font-size: 16px; /* Font size for consistency */
+}
+
+.input-field-e{
+  width: 200px; /* Match the width of the input field */
+border-color: #3e2780;
+}
 /* Customize the color of the range input track */
 input[type="range"] {
   width: 100%; /* Full width of the container */

@@ -12,12 +12,12 @@ function BusinessLoanInfo(){
           <div className="ploan-features">
             <div className="ploan-feature">
               <img src={ploaniagetwo} alt="Feature 1" />
-              <h4>Lower rates</h4>
+              <h4>Lower <br className='desktoponly'/>rates</h4>
               <p>Affordable EMIs with low interest business loan from leading financial institutes</p>
             </div>
             <div className="ploan-feature">
               <img src={ploanimagethree} alt="Feature 2" />
-              <h4>Quick And easy</h4>
+              <h4>Quick and easy</h4>
               <p>Hassle free online loan application process. Simple and paperless process with quick approvals.</p>
             </div>
             <div className="ploan-feature">
@@ -31,7 +31,7 @@ function BusinessLoanInfo(){
 {/**-------------------info section------------------------------------- */}  
     <div className="info">
 <h2>Single <span style={{color:"#3e2780"}}> window</span> for multiple <span style={{color:"#3e2780"}}> offers!</span></h2>
-<p>CreditHaat is on a mission to enable credit to every creditworthy Indian. Working with multiple financial <br></br>institutes allows CreditHaat to offer business loans up to ₹1Cr.</p>
+<p>CreditHaat is on a mission to enable credit to every creditworthy Indian. Working with multiple financial <br className='desktoponlys'/>institutes allows CreditHaat to offer business loans up to ₹1Cr.</p>
 </div>
 </>
     );

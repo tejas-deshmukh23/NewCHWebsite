@@ -43,7 +43,7 @@ const NewHomePageFooter = () => {
               <a class="footer-link_item" href="/faq">FAQs</a>
             </li> */}
             <li class="footer-link_item">
-              <a class="footer-link_item" href='/Allpartners' >Lending partners</a> 
+              <a class="footer-link_item" href='/NewAllPartners' >Lending partners</a> 
                           </li>
             <li class="footer-link_item">
               <a class="footer-link_item" href="/acq" >Acquisition partners</a>

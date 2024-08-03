@@ -13,12 +13,12 @@ function CcardInfo(){
           <div className="ploan-features">
             <div className="ploan-feature">
               <img src={ploaniagetwo} alt="Feature 1" />
-              <h4>Better rewards</h4>
+              <h4>Better <br className='desktoponly'/>rewards</h4>
               <p>Unlock exceptional rewards with our credit card, offering points on every purchase.</p>
             </div>
             <div className="ploan-feature">
               <img src={ploanimagethree} alt="Feature 2" />
-              <h4>Quick And easy</h4>
+              <h4>Quick and easy</h4>
               <p>Hassle free online loan application process. Simple and paperless process with quick approvals.</p>
             </div>
             <div className="ploan-feature">
@@ -33,7 +33,7 @@ function CcardInfo(){
     <div className="info">
 <h2>Single <span style={{color:"#3e2780"}}> window</span> for multiple <span style={{color:"#3e2780"}}> offers!</span></h2>
 <p>CreditHaat is on a mission to enable credit to every creditworthy Indian.
-Working with multiple banks and fintechs <br/>CreditHaat helps users avail the best secured and unsecured cards.</p>
+Working with multiple banks and fintechs <br className='desktoponlys'/>CreditHaat helps users avail the best secured and unsecured cards.</p>
 </div>
 </>
     );

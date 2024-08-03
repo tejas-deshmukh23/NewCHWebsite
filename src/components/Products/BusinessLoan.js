@@ -22,6 +22,9 @@ import OtpVerifyLoader from './OtpVerifyLoader';
 import LendersList from './LendersList';
 import {Link} from 'react-router-dom';
 import HowItWorks from '../NewHomePage/HowItWorks';
+import Snehal from "../NewHomePage/NewHomePageImages/Snehal.jpeg.jpeg";
+import NETHI from "../NewHomePage/NewHomePageImages/NETHI.jpeg";
+import BLListNavbar from './BLListNavbar';
 
 function BusinessLoan() {
 
@@ -115,16 +118,16 @@ function BusinessLoan() {
       id: 1,
       messageBefore: "100% Commited to customer satisfaction",
       message: "CreditHaat’s simple application process helped me find the best loan offer. In addition, their helpful loan executives helped me complete the loan application in no time.",
-      name: "Ekta",
-      image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Ekta.jpeg",
+      name: "Snehal",
+      image: Snehal,
     },
     {
       id: 2,
       messageBefore: "100% Commited to customer satisfaction",
       message:
         "Applying for a loan from CreditHaat is so easy and hasslefree. The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
-      name: "Deepak",
-      image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Deepak.jpeg",
+      name: "Nethi",
+      image: NETHI,
     },
     {
       id: 3,
@@ -409,7 +412,7 @@ function BusinessLoan() {
       console.log("Otp response code is : ", response.data.code)
 
       if (response.data.code === 0) {
-        // setDobFlag(false);
+        setDobFlag(false);
         setOtpVerified(true);
         setActiveContainer('formUpdated');
         setShowOTPModal(false);
@@ -417,7 +420,7 @@ function BusinessLoan() {
         setOtpLoader(false);
       }
       else if (response.data.code === 1) {
-        // setDobFlag(true);
+        setDobFlag(true);
         setOtpVerified(true);
         setActiveContainer('formUpdated');
         setShowOTPModal(false);
@@ -426,7 +429,7 @@ function BusinessLoan() {
       }
 
       else if (response.data.code === 2) {
-        // setDobFlag(false);
+        setDobFlag(false);
         setOtpVerified(true);
         setActiveContainer('formUpdated');
         setShowOTPModal(false);
@@ -434,7 +437,7 @@ function BusinessLoan() {
         setOtpLoader(false);
       }
       else if (response.data.code === 3) {
-        // setDobFlag(true);
+        setDobFlag(true);
         setOtpVerified(true);
         setActiveContainer('formUpdated');
         setShowOTPModal(false);
@@ -510,9 +513,18 @@ function BusinessLoan() {
       {
         otpLoader && <OtpVerifyLoader/>
       }
-      <div className='Nav-Bar'>
+      {
+        activeContainer !== "LendersList" &&
+        <div className='Nav-Bar'>
         <NewNavBar />
       </div>
+      }
+
+      { 
+        activeContainer === "LendersList" &&
+        <BLListNavbar/>
+      }
+      
       <div className="bloancontainer">
         {activeContainer === 'otpVerification' && !otpVerified && (
           <div className="bloanrow">
@@ -621,7 +633,7 @@ function BusinessLoan() {
         )}
 
         {activeContainer === 'formUpdated' && otpVerified && !activeSecondForm && (
-          <BusinessLoanPageTwo mainFormData={formData} onNext={handleNext} />
+          <BusinessLoanPageTwo mainFormData={formData} onNext={handleNext} dobFlag={dobFlag}/>
         )}
 
         {/* Conditionally render NewFormUpdatedSecond */}
@@ -630,13 +642,18 @@ function BusinessLoan() {
         )}
         {/* () => setActiveContainer('review') */}
         {
-          activeContainer === 'LendersList' && 
+          !isLoading && activeContainer === 'LendersList' && 
           <LendersList companies={lenderDetails} formData={formData}/>
         }
+
+{
+            activeContainer !== "LendersList" && <>
         <Members />
         <BusinessLoanInfo />
         <BLoanEMI />
         {/*-------------------------------how it works--------------------------------------------*/}
+
+       
         
 {/*-------------------------------how it works--------------------------------------------*/ }
 <div className="bloan-how-it-works">
@@ -662,6 +679,8 @@ function BusinessLoan() {
             </div>
           ))}
         </div>
+
+        
 
         {/*-------------------------------Customer Reviews---------------------------------------*/}
         <section className="customer-reviews">
@@ -689,11 +708,24 @@ function BusinessLoan() {
             ></span>
           ))}
         </div>
+        </>
+}
 
-        <Partnerlist />
+        {
+            activeContainer !== "LendersList" && <Partnerlist />
+          }
+
+        
         <div>
-          <NewHomeFooter />
-          <CityForBl />
+          {
+            activeContainer !== "LendersList" && <NewHomeFooter />
+          }
+
+{
+            activeContainer !== "LendersList" && <CityForBl />
+          }
+          
+          
         </div>
       </div>
     </>

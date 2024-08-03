@@ -14,6 +14,9 @@ import NewHomeFooter from '../NewHomePage/NewHomePageFooter';
 import NewCityFooter from './newCityFooter';
 import SupportPartner from './SupportPartner';
 import {Link} from "react-router-dom";
+import Snehal from '../NewHomePage/NewHomePageImages/Snehal.jpeg.jpeg';
+import NETHI from '../NewHomePage/NewHomePageImages/NETHI.jpeg';
+import HowItWorks from './HowItWorks';
 
 function HomePage() {
     const [activeReviewIndex, setActiveReviewIndex] = useState(0); // State to track active review index
@@ -46,16 +49,16 @@ const handleToggle = (index) => {
         id: 1,
         messageBefore: "100% Commited to customer satisfaction",
         message:"CreditHaat’s simple application process helped me find the best loan offer. In addition, their helpful loan executives helped me complete the loan application in no time.",
-        name: "Ekta",
-        image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Ekta.jpeg",
+        name: "Snehal",
+        image: Snehal,
       },
       {
         id: 2,
         messageBefore: "100% Commited to customer satisfaction",
         message:
-          "Applying for a loan from CreditHaat is so easy and hasslefree. The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
-        name: "Deepak",
-        image: "https://credithaatimages.s3.ap-south-1.amazonaws.com/siteimages/Deepak.jpeg",
+          "Applying for a loan from CreditHaat is so easy and hasslefree.x The platform helped me avail a loan of ₹5 Lacs within 4 hours!",
+        name: "Nethi",
+        image: NETHI,
       },
       {
         id: 3,
@@ -258,36 +261,14 @@ padding-top: 70px;
 
 
 {/* sixth image */}
-<section className="container banner">
 
-<div className="row mt-5">
-<div class="row text-center">
-      <div class="benefits-home">
-         <h1 style={{fontWeight:"normal"}}>Simple online process</h1>
-      </div>
-      </div>
-                <div className="col-md-6 py-md-5 px-md-5" style={{fontFamily:'Open Sans, sans-serif'}}>
-                    <div className="textf">
-                        <h3 style={{color:"#3e2780"}}><span className="number"> 1 </span> Complete CreditHaat eligibility <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;form</h3>
-                        <p>Complete the simple form to discover eligible lenders</p>
-                    </div>
-                    <div className="texts">
-                        <h3 style={{color:"#3e2780"}}><span className="number"> 2 </span> Choose lender and complete <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;process
-                        </h3>
-                        <p>Verify KYC and income proof</p>
-                    </div>
-                    <div className="textf">
-                        <h3 style={{color:"#3e2780"}}><span className="number"> 3 </span> Same day approval</h3>
-                        <p>Same day approval and disbursal within 24 hours</p>
-                    </div>
-                </div>
-                <div className="col-md-6">
-                    <div className="image">
-                        <img src={sixthimg} className="img-fluid banner_img" alt="Second Image" />
-                    </div>
-                </div>
-            </div>
-      </section>
+      <div className="bloan-how-it-works">
+          <h1>Simple online process</h1>
+        </div>
+      
+      <HowItWorks/>
+          
+
 
         
                               {/* review message */}

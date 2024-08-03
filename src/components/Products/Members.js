@@ -16,7 +16,7 @@ function Members(){
               <p>Credit partners</p>
             </div>
             <div className="bloan-f">
-              <h4>₹5,000 Cr</h4>
+              <h4>5k Cr</h4>
               <p>Loans disbursed</p>
             </div>
           </div>

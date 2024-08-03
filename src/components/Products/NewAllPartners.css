@@ -1,0 +1,142 @@
+.firstoneimage img{
+    width: 80px;
+}
+.firstoneimage p{
+    font-weight: bold;
+    color: #3e2780;
+    font-size: 22px;
+}
+
+.anothertext{
+    margin-top: -7%;
+}
+.firstonebutton{
+    background-color: #3e2780;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 55%;
+    border: none;
+}
+.secondonebutton{
+    background-color: #3e2780;
+    color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 40px;
+    border: none;
+}
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: "open Sans", sans-serif;
+  }
+  
+  .lending-partner-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .lending-content {
+    display: flex;
+    align-items: left;
+    width: 100%;
+  }
+  .credit-haat-color{
+    color: #3e2780;
+  }
+  
+  /* Grid Layout for Desktop */
+  @media (min-width: 768px) {
+    
+.newallfirst{
+    border-width: 1px;
+    padding: 20px;
+    margin-left: 10%;
+    max-width: 80%;
+  margin-top: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-size: 18px; 
+}
+
+    .lending-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Two equal columns */
+      gap: 20px; /* Space between the columns */
+      margin-left:10%;
+      margin-top:10px;
+    }
+    .lending-content h1{
+      
+      font-size: 3rem;
+      font-weight: normal;
+      
+    }
+    .lending-image{
+        margin-right:0;
+      margin-left: 0;
+    }
+  }
+  
+  /* Mobile Styles */
+
+   
+  
+@media (max-width: 768px){
+    .firstoneimage img{
+        width: 60px;
+    }
+    .newallfirst{
+ 
+        border-width: 1px;
+        padding: 10px;
+    
+      margin-top: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    .lending-content {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+    
+      .lending-text, .lending-image {
+        padding: 20px 0;
+      }
+    
+      .lending-image {
+        display: flex;
+        justify-content: center;
+      }
+    
+      .lending-image img {
+        max-width: 100%;
+        height: auto;
+      }
+    .anothertext{
+        margin-top:0;
+       
+    }
+    .firstonebutton{
+        background-color: #3e2780;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        margin-left: 0;
+        border: none;
+    }
+    .secondonebutton{
+        background-color: #3e2780;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        margin-left: 10%;
+        border: none;
+    } 
+}
