@@ -94,15 +94,52 @@
 .pploan-btn-btn-primary:hover {
   background-color: #5f3ba6;
 }
-.react-datepicker__input-container input {
+/* .react-datepicker__input-container input {
   width: 495px;
+  } */
+
+  @media (min-width: 769px){
+    /* .react-datepicker__input-container input {
+      /* border: none; */
+      /* width: 177px; */
+  
+      /* width: 100%; */
+      /* box-sizing: border-box; */
+  
+      /* }  */
+
+      .react-datepicker-wrapper {
+        display: inline-block;
+        padding: 0;
+        border: 0;
+        width: 100%;
+    }
   }
+
+  
     
 
 @media (max-width: 768px) {
-  .react-datepicker__input-container input {
+  /* .react-datepicker__input-container input {
     width: 177px;
+    } */
+
+    .react-datepicker__input-container input {
+      /* border: none; */
+      /* width: 177px; */
+  
+      width: 100%;
+      box-sizing: border-box;
+  
+      }
+
+      .react-datepicker-wrapper {
+        display: inline-block;
+        padding: 0;
+        border: 0;
+        width: 100%;
     }
+
   .pploancontainer {
     overflow: hidden;
   }

@@ -11,7 +11,7 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
     income: '',
     paymentType: '',
     pan: '',
-    dob: null, // Initialize dob as null for react-datepicker
+    dob: '', // Initialize dob as null for react-datepicker
   });
   const minYear = new Date().getFullYear()-59; // Example: Define minYear here
 
@@ -220,7 +220,7 @@ function PLoanSecondPage({ onNext, dobFlag, mainFormData }) {
             </div>
 
             {dobFlag &&
-              <div className="pploan-form-group" style={{border:'1px solid gray'}}>
+              <div className="pploan-form-group" >
                 <DatePicker
                   selected={formData.dob}
                   onChange={handleDateChange2}

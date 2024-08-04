@@ -46,6 +46,7 @@
   background-color: #fff;
   width: 100%;
   border-radius: 8px;
+
   
 }
 .bbloan-col-md-6 h1{
@@ -95,12 +96,34 @@
   background-color: #5f3ba6;
 }
 
+@media (min-width: 769px){
+  .react-datepicker__input-container input {
+    /* border: none; */
+    /* width: 177px; */
+
+    width: 100%;
+    box-sizing: border-box;
+
+    }
+}
 
 @media (max-width: 768px) {
   .react-datepicker__input-container input {
-    border: none;
-    width: 177px;
+    /* border: none; */
+    /* width: 177px; */
+
+    width: 100%;
+    box-sizing: border-box;
+
     }
+
+    .react-datepicker-wrapper {
+      display: inline-block;
+      padding: 0;
+      border: 0;
+      width: 100%;
+  }
+
   .bbloancontainer {
     overflow: hidden;
   }

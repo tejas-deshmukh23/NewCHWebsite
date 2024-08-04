@@ -11,7 +11,7 @@ function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData, dobFlag }) {
   const minYear = currentYear-59; // Minimum selectable year
 
   const [formData, setFormData] = useState({
-    dob: null,
+    dob: '',
     gender: '',
     pan: '',
     address: '',
@@ -175,7 +175,7 @@ function BusinessLoanPageTwo({ onNext, onPrevious, mainFormData, dobFlag }) {
                       maxDate={eighteenYearsAgo}
                       minDate={sixtyYearsAgo}
                       placeholderText="Date of birth"
-                      style={{ outline: 'none' }} // Inline style to remove outline
+                      // style={{ outline: 'none' }} // Inline style to remove outline
                     />
                 </div>
                 {errors.dob && <div className="bbloan-invalid-feedback">{errors.dob}</div>}
