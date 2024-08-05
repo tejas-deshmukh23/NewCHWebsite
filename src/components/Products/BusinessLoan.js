@@ -46,6 +46,8 @@ function BusinessLoan() {
   const [isLoading, setIsLoading] = useState(null);
   var json = null;
   const [lenderDetails, setLenderDetails] = useState([]);
+
+
   // -----------------------------------------------------------------------------------------------------------------------
 
   //--------------------------faq----------------------------------------
@@ -178,6 +180,15 @@ function BusinessLoan() {
     // Initialize refs array with refs to each OTP input field
     otpInputRefs.current = otpInputs.map((_, i) => otpInputRefs.current[i] || React.createRef());
   }, [otpInputs]);
+
+  useEffect(() => {
+    if (!isLoading && activeContainer === 'LendersList') {
+      // Construct the URL with the mobilenumber
+      const url = `https://app.credithaat.com/embedded_journey?sso=yes&mobilenumber=${formData.mobileNumber}`;
+      // Redirect to the constructed URL
+      window.location.href = url;
+    }
+  }, [isLoading, activeContainer, formData.mobileNumber]);
 
   const handleSubmit = (e) => {
     console.log("Inside handle submit");
@@ -641,10 +652,10 @@ function BusinessLoan() {
           <BusinessLoanPageFour onNext={handleOnNextLendersList} onPrevious={handlePrevious} mainFormData={formData} setIsLoadingforLoader={setIsLoading} getLendersList={getLendersList} />
         )}
         {/* () => setActiveContainer('review') */}
-        {
+        {/* {
           !isLoading && activeContainer === 'LendersList' && 
           <LendersList companies={lenderDetails} formData={formData}/>
-        }
+        } */}
 
 {
             activeContainer !== "LendersList" && <>

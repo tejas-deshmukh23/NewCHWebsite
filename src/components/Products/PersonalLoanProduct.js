@@ -174,7 +174,7 @@ const handleToggle = (index) => {
       useEffect(() => {
         if (!isLoading && activeContainer === 'LendersList') {
           // Construct the URL with the mobilenumber
-          const url = `https://app.credithaat.com/embedded_journey?mobilenumber=${formData.mobileNumber}`;
+          const url = `https://app.credithaat.com/embedded_journey?sso=yes&mobilenumber=${formData.mobileNumber}`;
           // Redirect to the constructed URL
           window.location.href = url;
         }
