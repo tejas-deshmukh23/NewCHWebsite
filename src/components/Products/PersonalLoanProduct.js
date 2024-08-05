@@ -168,6 +168,18 @@ const handleToggle = (index) => {
 
         }
       }, [otpStatus]);
+
+
+
+      useEffect(() => {
+        if (!isLoading && activeContainer === 'LendersList') {
+          // Construct the URL with the mobilenumber
+          const url = `https://app.credithaat.com/embedded_journey?mobilenumber=${formData.mobileNumber}`;
+          // Redirect to the constructed URL
+          window.location.href = url;
+        }
+      }, [isLoading, activeContainer, formData.mobileNumber]);
+
   
   useEffect(() => {
     // Initialize refs array with refs to each OTP input field
@@ -700,7 +712,8 @@ const getLendersList = async (e) => {
         )}
 
         {
-          !isLoading && activeContainer === 'LendersList' && <LendersList companies={lenderDetails} formData={formData}/>
+          // !isLoading && activeContainer === 'LendersList' && <LendersList companies={lenderDetails} formData={formData}/>
+
         }
 
 {
